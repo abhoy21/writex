@@ -43,3 +43,10 @@ body {
 ::-webkit-scrollbar {
     display: none;
 }
+
+.grid-pattern {
+  background-image: linear-gradient(to right, #002b07 0.5px, transparent 0.65px),
+    linear-gradient(to bottom, #002b07 0.5px, transparent 0.65px);
+  background-size: 90px 90px;
+  background-position: center;
+}
