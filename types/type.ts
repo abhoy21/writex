@@ -23,7 +23,18 @@ export const signinSchema = z.object({
     ),
 });
 
-export const contentSchema = z.object({
-  inputData: z.string(),
-  template: z.string(),
-});
+export interface Template {
+  name: string;
+  desc: string;
+  icon: string;
+  slug: string;
+  aiPrompt: string;
+  form: Form[];
+}
+
+interface Form {
+  label: string;
+  field: string;
+  name: string;
+  required?: boolean;
+}

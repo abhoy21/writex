@@ -7,7 +7,7 @@ export default function DashboardLayout({
   children: React.ReactNode;
 }>): React.JSX.Element {
   return (
-    <div>
+    <div className='min-h-screen'>
       <div className='hidden md:block md:w-64 fixed'>
         <DashboardSidebar />
       </div>
