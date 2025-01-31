@@ -21,7 +21,7 @@ export default function RichTextEditor({
     editorProps: {
       attributes: {
         class:
-          "min-h-[200px] h-[600px] cursor-text rounded-xl border border-malachite-500/45 p-5",
+          "min-h-[200px] h-[600px] cursor-text rounded-xl border border-supernova-500/45 p-5",
       },
     },
     immediatelyRender: true,

@@ -7,10 +7,10 @@ export default function Hero(): React.JSX.Element {
     <section className='pt-16 min-h-screen overflow-hidden'>
       <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full relative'>
         <div className='flex flex-col items-center justify-center py-20 relative'>
-          <span className='px-4 py-2 bg-malachite-500/10 text-malachite-400 rounded-full text-sm font-medium inline-block'>
+          <span className='px-4 py-2 bg-supernova-500/10 text-supernova-400 rounded-full text-sm font-medium inline-block'>
             Write Better, Faster
           </span>
-          <h1 className='text-3xl md:text-5xl lg:text-7xl  font-montserrat bg-gradient-to-r from-malachite-100 to-malachite-700 text-transparent bg-clip-text leading-tight tracking-tight'>
+          <h1 className='text-3xl md:text-5xl lg:text-7xl  font-montserrat bg-gradient-to-r from-supernova-100 to-supernova-700 text-transparent bg-clip-text leading-tight tracking-tight'>
             Write Better with WriteX
           </h1>
 
@@ -24,7 +24,7 @@ export default function Hero(): React.JSX.Element {
 
           <div className='flexflex-col sm:flex-row gap-6 space-x-8 mt-6'>
             <Link href='/auth/signup'>
-              <Button className='text-malachite-200'>
+              <Button className='text-supernova-950 hover:text-supernova-500'>
                 Get Started Now
                 <ArrowUpRight />
               </Button>
@@ -34,7 +34,7 @@ export default function Hero(): React.JSX.Element {
 
         <div className='flex flex-col sm:flex-row justify-center items-center gap-6 text-gray-400 pt-4'>
           <div className='flex items-center gap-3'>
-            <div className='w-5 h-5 bg-gradient-to-r from-malachite-500 to-malachite-900 rounded-full flex items-center justify-center'>
+            <div className='w-5 h-5 bg-gradient-to-r from-supernova-500 to-supernova-900 rounded-full flex items-center justify-center'>
               <svg
                 className='w-3 h-3 text-white'
                 fill='currentColor'
@@ -53,7 +53,7 @@ export default function Hero(): React.JSX.Element {
           </div>
 
           <div className='flex items-center gap-3'>
-            <div className='w-5 h-5 bg-gradient-to-r from-malachite-500 to-malachite-900 rounded-full flex items-center justify-center'>
+            <div className='w-5 h-5 bg-gradient-to-r from-supernova-500 to-supernova-900 rounded-full flex items-center justify-center'>
               <svg
                 className='w-3 h-3 text-white'
                 fill='currentColor'
@@ -72,7 +72,7 @@ export default function Hero(): React.JSX.Element {
           </div>
 
           <div className='flex items-center gap-3'>
-            <div className='w-5 h-5 bg-gradient-to-r from-malachite-500 to-malachite-900 rounded-full flex items-center justify-center'>
+            <div className='w-5 h-5 bg-gradient-to-r from-supernova-500 to-supernova-900 rounded-full flex items-center justify-center'>
               <svg
                 className='w-3 h-3 text-white'
                 fill='currentColor'

@@ -26,6 +26,7 @@ export const signinSchema = z.object({
 export interface Template {
   name: string;
   desc: string;
+  category: string;
   icon: string;
   slug: string;
   aiPrompt: string;

@@ -6,7 +6,7 @@ export default function Footer(): React.JSX.Element {
       <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
         <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 mb-16'>
           <div className='lg:col-span-2'>
-            <h2 className='text-base md:text-2xl font-montserrat bg-gradient-to-r from-malachite-300 to-malachite-900 text-transparent bg-clip-text'>
+            <h2 className='text-base md:text-2xl font-montserrat bg-gradient-to-r from-supernova-300 to-supernova-900 text-transparent bg-clip-text'>
               WriteX
             </h2>
             <p className='text-gray-400 mb-6 max-w-md'>
@@ -17,7 +17,7 @@ export default function Footer(): React.JSX.Element {
             <div className='flex space-x-4'>
               <Link
                 href='#'
-                className='text-gray-400 hover:text-malachite-500 transition-colors'
+                className='text-gray-400 hover:text-supernova-500 transition-colors'
               >
                 <svg
                   className='w-6 h-6'
@@ -34,7 +34,7 @@ export default function Footer(): React.JSX.Element {
 
               <Link
                 href='#'
-                className='text-gray-400 hover:text-malachite-500 transition-colors'
+                className='text-gray-400 hover:text-supernova-500 transition-colors'
               >
                 <svg
                   className='w-6 h-6'
@@ -51,7 +51,7 @@ export default function Footer(): React.JSX.Element {
 
               <Link
                 href='#'
-                className='text-gray-400 hover:text-malachite-500 transition-colors'
+                className='text-gray-400 hover:text-supernova-500 transition-colors'
               >
                 <svg
                   className='w-6 h-6'
@@ -74,7 +74,7 @@ export default function Footer(): React.JSX.Element {
               <li id='el-swct3au0'>
                 <Link
                   href='#features'
-                  className='text-gray-400 hover:text-malachite-500 transition-colors'
+                  className='text-gray-400 hover:text-supernova-500 transition-colors'
                 >
                   Features
                 </Link>
@@ -83,7 +83,7 @@ export default function Footer(): React.JSX.Element {
               <li id='el-swct3au0'>
                 <Link
                   href='#features'
-                  className='text-gray-400 hover:text-malachite-500 transition-colors'
+                  className='text-gray-400 hover:text-supernova-500 transition-colors'
                 >
                   Testimonials
                 </Link>
@@ -92,7 +92,7 @@ export default function Footer(): React.JSX.Element {
               <li id='el-swct3au0'>
                 <Link
                   href='#features'
-                  className='text-gray-400 hover:text-malachite-500 transition-colors'
+                  className='text-gray-400 hover:text-supernova-500 transition-colors'
                 >
                   FAQs
                 </Link>
@@ -107,7 +107,7 @@ export default function Footer(): React.JSX.Element {
               <li id='el-swct3au0'>
                 <Link
                   href='#features'
-                  className='text-gray-400 hover:text-malachite-500 transition-colors'
+                  className='text-gray-400 hover:text-supernova-500 transition-colors'
                 >
                   About Us
                 </Link>
@@ -116,7 +116,7 @@ export default function Footer(): React.JSX.Element {
               <li id='el-swct3au0'>
                 <Link
                   href='#features'
-                  className='text-gray-400 hover:text-malachite-500 transition-colors'
+                  className='text-gray-400 hover:text-supernova-500 transition-colors'
                 >
                   Careers
                 </Link>
@@ -125,7 +125,7 @@ export default function Footer(): React.JSX.Element {
               <li id='el-swct3au0'>
                 <Link
                   href='#features'
-                  className='text-gray-400 hover:text-malachite-500 transition-colors'
+                  className='text-gray-400 hover:text-supernova-500 transition-colors'
                 >
                   blog
                 </Link>
@@ -140,7 +140,7 @@ export default function Footer(): React.JSX.Element {
               <li id='el-swct3au0'>
                 <Link
                   href='#features'
-                  className='text-gray-400 hover:text-malachite-500 transition-colors'
+                  className='text-gray-400 hover:text-supernova-500 transition-colors'
                 >
                   Help Center
                 </Link>
@@ -149,7 +149,7 @@ export default function Footer(): React.JSX.Element {
               <li id='el-swct3au0'>
                 <Link
                   href='#features'
-                  className='text-gray-400 hover:text-malachite-500 transition-colors'
+                  className='text-gray-400 hover:text-supernova-500 transition-colors'
                 >
                   Documentation
                 </Link>
@@ -158,7 +158,7 @@ export default function Footer(): React.JSX.Element {
               <li id='el-swct3au0'>
                 <Link
                   href='#features'
-                  className='text-gray-400 hover:text-malachite-500 transition-colors'
+                  className='text-gray-400 hover:text-supernova-500 transition-colors'
                 >
                   Contact Us
                 </Link>
@@ -174,14 +174,14 @@ export default function Footer(): React.JSX.Element {
             <div className='flex space-x-6 text-sm' id='el-szp743qg'>
               <Link
                 href='#'
-                className='text-gray-400 hover:text-malachite-500 transition-colors'
+                className='text-gray-400 hover:text-supernova-500 transition-colors'
                 id='el-005uxamv'
               >
                 Privacy Policy
               </Link>
               <Link
                 href='#'
-                className='text-gray-400 hover:text-malachite-500 transition-colors'
+                className='text-gray-400 hover:text-supernova-500 transition-colors'
                 id='el-005uxamv'
               >
                 Terms of Service

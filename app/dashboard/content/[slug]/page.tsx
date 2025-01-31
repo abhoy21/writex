@@ -23,7 +23,10 @@ export default async function CreateContent({
   return (
     <div>
       <Link href='/dashboard'>
-        <Button variant='ghost' className='m-4'>
+        <Button
+          variant='ghost'
+          className='m-4 text-supernova-500 hover:text-supernova-950'
+        >
           <ArrowLeft className='h-4 w-4' />
           Back to Templates
         </Button>

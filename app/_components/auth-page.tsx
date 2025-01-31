@@ -10,7 +10,7 @@ import { useRouter } from "next/navigation";
 import { useRef } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
-import { signinSchema, signupSchema } from "../types/type";
+import { signinSchema, signupSchema } from "../../types/type";
 
 type signInType = z.infer<typeof signinSchema>;
 type signUpType = z.infer<typeof signupSchema>;
@@ -58,12 +58,12 @@ export default function AuthPage({
 
   return (
     <div className='bg-gradient-to-br from-neutral-900 via-neutral-950 to-neutral-900 w-screen h-screen flex items-center justify-center grid-pattern'>
-      <div className='p-9 m-2 bg-gradient-to-br from-neutral-950 to-neutral-900 border border-malachite-500/45 rounded-2xl w-full max-w-md'>
+      <div className='p-9 m-2 bg-gradient-to-br from-neutral-950 to-neutral-900 border border-supernova-500/45 rounded-2xl w-full max-w-md'>
         <div className='flex flex-col items-start'>
-          <h1 className='text-3xl font-semibold bg-gradient-to-r from-malachite-300 to-malachite-700 text-transparent bg-clip-text'>
+          <h1 className='text-3xl font-semibold bg-gradient-to-r from-supernova-100 to-supernova-500 text-transparent bg-clip-text'>
             WriteX
           </h1>
-          <h3 className='text-2xl font-semibold text-malachite-200'>
+          <h3 className='text-2xl font-semibold text-supernova-200'>
             Welcome!
           </h3>
           <p className='text-gray-400 text-center text-sm mb-6'>
@@ -105,9 +105,9 @@ export default function AuthPage({
               onClick={() => togglePasswordVisibility()}
             >
               {showPasswordRef.current ? (
-                <EyeOff className='h-4 w-4 text-malachite-300' />
+                <EyeOff className='h-4 w-4 text-supernova-300' />
               ) : (
-                <Eye className='h-4 w-4 text-malachite-300' />
+                <Eye className='h-4 w-4 text-supernova-300' />
               )}
             </Button>
             {errors.password && (
@@ -117,9 +117,12 @@ export default function AuthPage({
             )}
           </div>
 
-          <Button disabled={!isValid || isSubmitting} className='w-full'>
+          <Button
+            disabled={!isValid || isSubmitting}
+            className='w-full text-supernova-950 hover:text-supernova-500'
+          >
             {isSubmitting && (
-              <span className='spinner-border spinner-border-sm mr-1'></span>
+              <span className='spinner-border spinner-border-sm mr-1 text-supernova-950'></span>
             )}
             {isSignin ? "Sign In" : "Sign Up"}
           </Button>
@@ -129,14 +132,14 @@ export default function AuthPage({
             {isSignin ? (
               <Link
                 href='/auth/signup'
-                className='text-malachite-300 hover:text-malachite-600 transition-colors'
+                className='text-supernova-300 hover:text-supernova-600 transition-colors'
               >
                 Sign up
               </Link>
             ) : (
               <Link
                 href='/auth/signin'
-                className='text-malachite-300 hover:text-malachite-600 transition-colors'
+                className='text-supernova-300 hover:text-supernova-600 transition-colors'
               >
                 Sign in
               </Link>

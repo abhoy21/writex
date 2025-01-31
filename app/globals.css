@@ -8,26 +8,26 @@ body {
 
 @layer base {
   :root {
-    --background: 240 10% 3.9%;
+   --background: 0 0% 7%;
     --foreground: 0 0% 98%;
-    --card: 240 10% 3.9%;
-    --card-foreground: 0 0% 98%;
-    --popover: 240 10% 3.9%;
-    --popover-foreground: 0 0% 98%;
-    --primary: 142 91% 25%;    /* malachite-700 */
-    --primary-foreground: 142 89% 73%; /* malachite-300 */
-    --secondary: 142 73% 24%;   /* malachite-800 */
-    --secondary-foreground: 142 96% 91%; /* malachite-50 */
-    --muted: 142 73% 24%;      /* malachite-800 */
-    --muted-foreground: 142 89% 73%; /* malachite-300 */
-    --accent: 142 91% 20%;     /* malachite-700 */
-    --accent-foreground: 142 96% 91%; /* malachite-50 */
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 0 0% 98%;
-    --border: 142 73% 24%;     /* malachite-800 */
-    --input: 142 73% 24%;      /* malachite-800 */
-    --ring: 142 89% 73%;       /* malachite-300 */
-    --radius: 0.5rem;
+   --card: 56, 95%, 96%;                     /* supernova-50 */
+--card-foreground: 47, 67%, 22%;          /* supernova-900 */
+--popover: 56, 95%, 96%;                  /* supernova-50 */
+--popover-foreground: 47, 67%, 22%;       /* supernova-900 */
+--primary: 49, 96%, 49%;                  /* supernova-400 */
+--primary-foreground: 56, 95%, 96%;       /* supernova-50 */
+--secondary: 47, 96%, 40%;                /* supernova-600 */
+--secondary-foreground: 56, 95%, 96%;     /* supernova-50 */
+--muted: 47, 88%, 32%;                    /* supernova-700 */
+--muted-foreground: 49, 98%, 70%;         /* supernova-200 */
+--accent: 49, 96%, 49%;                   /* supernova-400 */
+--accent-foreground: 56, 95%, 96%;        /* supernova-50 */
+--destructive: 47, 67%, 22%;              /* supernova-900 */
+--destructive-foreground: 56, 95%, 96%;   /* supernova-50 */
+--border: 47, 88%, 32%;                   /* supernova-700 */
+--input: 47, 88%, 32%;                    /* supernova-700 */
+--ring: 49, 98%, 58%;                     /* supernova-300 */
+--radius: 0.5rem;
   }
 }
 
@@ -45,8 +45,8 @@ body {
 }
 
 .grid-pattern {
-  background-image: linear-gradient(to right, #002b07 0.5px, transparent 0.65px),
-    linear-gradient(to bottom, #002b07 0.5px, transparent 0.65px);
+  background-image: linear-gradient(to right, #362b00 0.5px, transparent 0.65px),
+    linear-gradient(to bottom, #362b00 0.5px, transparent 0.65px);
   background-size: 90px 90px;
   background-position: center;
 }

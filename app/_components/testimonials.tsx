@@ -6,7 +6,7 @@ export default function Testimonials(): React.JSX.Element {
       <div className='mx-auto max-w-7xl px-4 sm:px-6 lg:px-8'>
         <div className='relative'>
           <div className='text-center font-montserrat mb-16 md:mb-32'>
-            <h2 className='text-3xl md:text-4xl font-bold text-malachite-200 mb-4'>
+            <h2 className='text-3xl md:text-4xl font-bold text-supernova-200 mb-4'>
               What Our Users Say
             </h2>
             <p className='text-gray-400 text-lg max-w-2xl mx-auto'>
@@ -16,7 +16,7 @@ export default function Testimonials(): React.JSX.Element {
 
           <div className='grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-6 lg:grid-cols-3'>
             <div className='flex flex-col gap-4 md:gap-8'>
-              <div className='flex w-full flex-col gap-8 rounded-xl bg-gradient-to-br from-neutral-950 to-neutral-900 border border-malachite-500/25 px-4 py-4 shadow-lg md:gap-60 md:px-8'>
+              <div className='flex w-full flex-col gap-8 rounded-xl bg-gradient-to-br from-neutral-950 to-neutral-900 border border-supernova-500/25 px-4 py-4 shadow-lg md:gap-60 md:px-8'>
                 <h3 className='mt-4 text-base font-medium text-gray-700 md:text-lg'>
                   &quot;WriteX is an absolute game-changer! The AI-powered
                   content generation feature makes it incredibly easy to create
@@ -47,7 +47,7 @@ export default function Testimonials(): React.JSX.Element {
                 </div>
               </div>
 
-              <div className='flex w-full flex-col gap-4 rounded-xl bg-gradient-to-br from-neutral-950 to-neutral-900 border border-malachite-500/25 p-4 shadow-md md:gap-10'>
+              <div className='flex w-full flex-col gap-4 rounded-xl bg-gradient-to-br from-neutral-950 to-neutral-900 border border-supernova-500/25 p-4 shadow-md md:gap-10'>
                 <h3 className='mt-2 text-base font-medium text-gray-700 md:text-lg'>
                   &quot;As a content creator working with a remote team, WriteX
                   has become an essential tool for us. It feels like we&apos;re
@@ -80,7 +80,7 @@ export default function Testimonials(): React.JSX.Element {
 
             <div className='flex flex-col gap-4 md:gap-8 lg:col-span-2'>
               <div className='grid grid-cols-1 gap-4 md:grid-cols-2'>
-                <div className='md:col-span-2 w-full gap-4 rounded-xl bg-gradient-to-br from-neutral-950 to-neutral-900 border border-malachite-500/25 p-4 shadow-md md:gap-8'>
+                <div className='md:col-span-2 w-full gap-4 rounded-xl bg-gradient-to-br from-neutral-950 to-neutral-900 border border-supernova-500/25 p-4 shadow-md md:gap-8'>
                   <h3 className='text-base font-medium text-gray-700 md:text-lg my-2 md:mt-6 md:mb-12'>
                     &quot;WriteX has unlocked a whole new level of productivity
                     for me and my colleagues. Whether we&apos;re drafting social
@@ -113,7 +113,7 @@ export default function Testimonials(): React.JSX.Element {
               </div>
 
               <div className='grid grid-cols-1 gap-4 md:grid-cols-2'>
-                <div className='flex w-full flex-col gap-8 rounded-xl bg-gradient-to-br from-neutral-950 to-neutral-900 border border-malachite-500/25 px-4 py-4 shadow-lg md:gap-60 md:px-8'>
+                <div className='flex w-full flex-col gap-8 rounded-xl bg-gradient-to-br from-neutral-950 to-neutral-900 border border-supernova-500/25 px-4 py-4 shadow-lg md:gap-60 md:px-8'>
                   <h3 className='mt-4 text-base font-medium text-gray-700 md:text-lg'>
                     &quot;WriteX is the perfect platform for anyone who loves to
                     create content efficiently. The interface is intuitive, and
@@ -146,7 +146,7 @@ export default function Testimonials(): React.JSX.Element {
                   </div>
                 </div>
 
-                <div className='relative flex h-[400px] w-full flex-col gap-8 rounded-xl bg-gradient-to-br from-neutral-950 to-neutral-900 border border-malachite-500/25 shadow-lg md:h-auto md:gap-60'>
+                <div className='relative flex h-[400px] w-full flex-col gap-8 rounded-xl bg-gradient-to-br from-neutral-950 to-neutral-900 border border-supernova-500/25 shadow-lg md:h-auto md:gap-60'>
                   <Image
                     alt='testimonial'
                     className='z-0 rounded-xl object-cover'

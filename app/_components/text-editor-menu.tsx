@@ -27,7 +27,7 @@ const Button = ({
     onClick={onClick}
     disabled={disabled}
     className={`p-2 ${
-      isActive ? "bg-malachite-500 text-white rounded-md" : ""
+      isActive ? "bg-supernova-500 text-[#181818] rounded-md" : ""
     }`}
   >
     {children}

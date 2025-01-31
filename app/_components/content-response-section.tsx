@@ -16,6 +16,7 @@ export default function ContentResponseSection() {
       <div className='flex items-center justify-between gap-2'>
         <h2>Result</h2>
         <Button
+          className='text-supernova-950 hover:text-supernova-500'
           onClick={() => {
             if (editorRef.current) {
               navigator.clipboard.writeText(editorRef.current);

@@ -28,16 +28,16 @@ export default function DashboardSidebar(): React.JSX.Element {
     console.log(path);
   }, [path]);
   return (
-    <div className='h-screen p-4 border-r shadow-sm shadow-malachite-900/45'>
-      <div className='flex justify-center border-b border-malachite-900/45'>
+    <div className='h-screen p-4 shadow-sm shadow-supernova-900/45'>
+      <div className='flex justify-center '>
         <Logo />
       </div>
 
       <div className='mt-6'>
         {MenuList.map((menu, index) => (
           <div
-            className={`flex items-center gap-4 mb-4 hover:bg-malachite-900/45 text-malachite-500 hover:text-malachite-100 p-2 rounded-lg cursor-pointer transition-colors ease-in duration-300 ${
-              path === menu.path && "bg-malachite-900/45 text-malachite-100"
+            className={`flex items-center gap-4 mb-4 hover:bg-supernova-900/45 text-supernova-500 hover:text-supernova-100 p-2 rounded-lg cursor-pointer transition-colors ease-in duration-300 ${
+              path === menu.path && "bg-supernova-900/45 text-supernova-100"
             }`}
             key={index}
           >

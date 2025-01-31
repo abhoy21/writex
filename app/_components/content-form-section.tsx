@@ -5,6 +5,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Template } from "@/types/type";
 
 import { zodResolver } from "@hookform/resolvers/zod";
+import axios from "axios";
 import Image from "next/image";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
@@ -25,6 +26,8 @@ export default function ContentFormSection({
     ),
   );
 
+  const token = localStorage.getItem("token");
+
   const {
     register,
     handleSubmit,
@@ -37,6 +40,29 @@ export default function ContentFormSection({
 
   const onSubmit = async (data: z.infer<typeof formSchema>) => {
     try {
+      const submitDataFormat = {
+        inputData: data.outline,
+        template: selectedTemplate.slug,
+        category: selectedTemplate.category,
+        aiPrompt: selectedTemplate.aiPrompt,
+      };
+
+      const response = await axios.post(
+        `${process.env.BACKEND_URL}/api/v1/content/create-content`,
+        {
+          body: submitDataFormat,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        },
+      );
+
+      if (response.status === 200) {
+        console.log(response.data);
+      }
+
       console.log(data);
       reset();
     } catch (error) {
@@ -45,14 +71,14 @@ export default function ContentFormSection({
   };
 
   return (
-    <div className='p-4 rounded-xl flex flex-col gap-4 bg-gradient-to-br from-neutral-900 via-neutral-950 to-neutral-900 border border-malachite-700'>
+    <div className='p-4 rounded-xl flex flex-col gap-4 bg-gradient-to-br from-neutral-900 via-neutral-950 to-neutral-900 border border-supernova-700'>
       <Image
         src={selectedTemplate.icon}
         alt={selectedTemplate.name}
         width={64}
         height={64}
       />
-      <h1 className='text-3xl font-bold text-malachite-300'>
+      <h1 className='text-3xl font-bold text-supernova-300'>
         {selectedTemplate.name}
       </h1>
       <p className='text-sm text-neutral-500'>{selectedTemplate.desc}</p>
@@ -101,7 +127,7 @@ export default function ContentFormSection({
 
         <Button
           type='submit'
-          className='w-full py-4'
+          className='w-full py-4 text-supernova-950 hover:text-supernova-500'
           disabled={isSubmitting || !isValid}
         >
           {isSubmitting ? "Generating..." : "Generate"}

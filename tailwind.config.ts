@@ -12,19 +12,21 @@ export default {
       colors: {
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
-        malachite: {
-          "50": "#effef0",
-          "100": "#d9ffdd",
-          "200": "#b6fcbf",
-          "300": "#7df88d",
-          "400": "#21e73b",
-          "500": "#15d22e",
-          "600": "#0aaf20",
-          "700": "#0c891e",
-          "800": "#106b1d",
-          "900": "#0f581b",
-          "950": "#02310a",
+
+        supernova: {
+          "50": "#fefae8",
+          "100": "#fef2c3",
+          "200": "#fee78a",
+          "300": "#fdd847",
+          "400": "#facc15",
+          "500": "#eabd08",
+          "600": "#caa204",
+          "700": "#a18207",
+          "800": "#856d0e",
+          "900": "#715e12",
+          "950": "#423606",
         },
+
         card: {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",

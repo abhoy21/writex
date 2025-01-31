@@ -4,7 +4,7 @@ export default function Showcase(): React.JSX.Element {
       <div className='flex justify-center items-center'>
         <div className='w-full lg:w-1/2'>
           <div className='relative'>
-            <div className='absolute inset-0 bg-gradient-to-r from-malachite-300/30 to-malachite-500/45 blur-[120px] rounded-full'></div>
+            <div className='absolute inset-0 bg-gradient-to-r from-supernova-300/30 to-supernova-500/45 blur-[120px] rounded-full'></div>
 
             <div className='relative bg-gradient-to-br from-neutral-800/50 to-neutral-900/50 border border-gray-800/50 p-6 rounded-2xl backdrop-blur-xl shadow-2xl'>
               <div className='flex items-center gap-2 mb-4'>
