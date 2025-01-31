@@ -29,9 +29,9 @@ export default async function CreateContent({
         </Button>
       </Link>
 
-      <div className='grid grid-cols-1 md:grid-cols-3 gap-6 p-5'>
+      <div className='grid grid-cols-1 lg:grid-cols-3 gap-6 p-5'>
         <ContentFormSection selectedTemplate={selectedTemplate} />
-        <div className='col-span-2'>
+        <div className='md:col-span-2'>
           <ContentResponseSection />
         </div>
       </div>
