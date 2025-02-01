@@ -13,7 +13,7 @@ export default function DashboardHeader(): React.JSX.Element {
         />
       </div>
       <div className='p-2'>
-        <h2 className='bg-gradient-to-br from-supernova-500 to-supernova-900 p-2 text-supernova-100 rounded-lg text-sm font-semibold'>
+        <h2 className='bg-gradient-to-br from-supernova-200 to-supernova-500 p-2 text-supernova-800 rounded-lg text-sm font-semibold'>
           Join the community today! 🚀
         </h2>
       </div>

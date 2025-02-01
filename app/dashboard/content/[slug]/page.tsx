@@ -2,6 +2,7 @@ import templateData from "@/app/(data)/templates";
 import ContentFormSection from "@/app/_components/content-form-section";
 import ContentResponseSection from "@/app/_components/content-response-section";
 import { Button } from "@/components/ui/button";
+import { Redirect } from "@/redirect";
 import { Template } from "@/types/type";
 import { ArrowLeft } from "lucide-react";
 import Link from "next/link";
@@ -22,6 +23,7 @@ export default async function CreateContent({
 
   return (
     <div>
+      <Redirect />
       <Link href='/dashboard'>
         <Button
           variant='ghost'

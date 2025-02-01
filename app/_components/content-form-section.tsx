@@ -41,20 +41,24 @@ export default function ContentFormSection({
   const onSubmit = async (data: z.infer<typeof formSchema>) => {
     try {
       const submitDataFormat = {
-        inputData: data.outline,
+        topic: data.topic,
+        outline: data.outline || "",
         template: selectedTemplate.slug,
         category: selectedTemplate.category,
         aiPrompt: selectedTemplate.aiPrompt,
       };
-
+      console.log("Submitting data:", submitDataFormat);
+      console.log("topic\n", data.topic);
+      console.log("outline\n", data.outline);
       const response = await axios.post(
-        `${process.env.BACKEND_URL}/api/v1/content/create-content`,
-        {
-          body: submitDataFormat,
-        },
+        `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/v1/content/create-content`,
+
+        submitDataFormat,
+
         {
           headers: {
             Authorization: `Bearer ${token}`,
+            "Content-Type": "application/json",
           },
         },
       );

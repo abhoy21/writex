@@ -35,7 +35,7 @@ export default function AuthPage({
   const onSubmit = async (data: signInType | signUpType) => {
     try {
       const response = await axios.post(
-        `${process.env.HTTP_BACKEND_URL}/api/v1/auth/${
+        `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/v1/auth/${
           isSignin ? "signin" : "signup"
         }`,
         data,
@@ -60,9 +60,11 @@ export default function AuthPage({
     <div className='bg-gradient-to-br from-neutral-900 via-neutral-950 to-neutral-900 w-screen h-screen flex items-center justify-center grid-pattern'>
       <div className='p-9 m-2 bg-gradient-to-br from-neutral-950 to-neutral-900 border border-supernova-500/45 rounded-2xl w-full max-w-md'>
         <div className='flex flex-col items-start'>
-          <h1 className='text-3xl font-semibold bg-gradient-to-r from-supernova-100 to-supernova-500 text-transparent bg-clip-text'>
-            WriteX
-          </h1>
+          <Link href={"/"}>
+            <h1 className='text-3xl font-semibold bg-gradient-to-r from-supernova-100 to-supernova-500 text-transparent bg-clip-text cursor-pointer'>
+              WriteX
+            </h1>
+          </Link>
           <h3 className='text-2xl font-semibold text-supernova-200'>
             Welcome!
           </h3>

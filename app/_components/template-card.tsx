@@ -14,7 +14,7 @@ export default function TemplateCard({
         <h2 className='font-montserrat text-base text-supernova-200'>
           {item.name}
         </h2>
-        <p className='text-supernova-50 text-sm'>{item.desc}</p>
+        <p className='text-supernova-50 text-sm line-clamp-2'>{item.desc}</p>
       </div>
     </Link>
   );
