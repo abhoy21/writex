@@ -2,15 +2,9 @@
 
 import { Button } from "@/components/ui/button";
 import { Copy } from "lucide-react";
-import { useRef } from "react";
 import RichTextEditor from "./rich-text-editor";
 
-export default function ContentResponseSection() {
-  const editorRef = useRef<string>(null);
-
-  const onChange = (content: string) => {
-    editorRef.current = content;
-  };
+export default function ContentResponseSection({handleContentChange, content}: {handleContentChange: (content: string) => void, content: string}): React.JSX.Element {
   return (
     <div className='bg-gradient-to-br from-neutral-900 via-neutral-950 to-neutral-900 p-4 rounded-xl'>
       <div className='flex items-center justify-between gap-2'>
@@ -20,8 +14,8 @@ export default function ContentResponseSection() {
         <Button
           className='text-supernova-950 hover:text-supernova-500'
           onClick={() => {
-            if (editorRef.current) {
-              navigator.clipboard.writeText(editorRef.current);
+            if (content) {
+              navigator.clipboard.writeText(content);
             }
           }}
         >
@@ -30,8 +24,8 @@ export default function ContentResponseSection() {
         </Button>
       </div>
       <RichTextEditor
-        onChange={onChange}
-        initialContent='Results will appear here! Thank you for using WriteX'
+        onChange={handleContentChange}     
+        initialContent={content}
       />
     </div>
   );

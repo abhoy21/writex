@@ -1,6 +1,5 @@
 import templateData from "@/app/(data)/templates";
-import ContentFormSection from "@/app/_components/content-form-section";
-import ContentResponseSection from "@/app/_components/content-response-section";
+import ContentSection from "@/app/_components/content-section";
 import { Button } from "@/components/ui/button";
 import { Redirect } from "@/redirect";
 import { Template } from "@/types/type";
@@ -34,12 +33,7 @@ export default async function CreateContent({
         </Button>
       </Link>
 
-      <div className='grid grid-cols-1 lg:grid-cols-3 gap-6 p-5'>
-        <ContentFormSection selectedTemplate={selectedTemplate} />
-        <div className='md:col-span-2'>
-          <ContentResponseSection />
-        </div>
-      </div>
+    <ContentSection selectedTemplate={selectedTemplate} />
     </div>
   );
 }

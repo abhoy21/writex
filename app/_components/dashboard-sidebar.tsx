@@ -24,9 +24,6 @@ const MenuList = [
 
 export default function DashboardSidebar(): React.JSX.Element {
   const path = usePathname();
-  useEffect(() => {
-    console.log(path);
-  }, [path]);
   return (
     <div className='h-screen p-4 shadow-sm shadow-supernova-900/45'>
       <div className='flex justify-center '>

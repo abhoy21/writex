@@ -8,26 +8,26 @@ body {
 
 @layer base {
   :root {
-   --background: 0 0% 7%;
-    --foreground: 0 0% 98%;
-   --card: 56, 95%, 96%;                     /* supernova-50 */
---card-foreground: 47, 67%, 22%;          /* supernova-900 */
---popover: 56, 95%, 96%;                  /* supernova-50 */
---popover-foreground: 47, 67%, 22%;       /* supernova-900 */
---primary: 49, 96%, 49%;                  /* supernova-400 */
---primary-foreground: 56, 95%, 96%;       /* supernova-50 */
---secondary: 47, 96%, 40%;                /* supernova-600 */
---secondary-foreground: 56, 95%, 96%;     /* supernova-50 */
---muted: 47, 88%, 32%;                    /* supernova-700 */
---muted-foreground: 49, 98%, 70%;         /* supernova-200 */
---accent: 49, 96%, 49%;                   /* supernova-400 */
---accent-foreground: 56, 95%, 96%;        /* supernova-50 */
---destructive: 47, 67%, 22%;              /* supernova-900 */
---destructive-foreground: 56, 95%, 96%;   /* supernova-50 */
---border: 47, 88%, 32%;                   /* supernova-700 */
---input: 47, 88%, 32%;                    /* supernova-700 */
---ring: 49, 98%, 58%;                     /* supernova-300 */
---radius: 0.5rem;
+    --background: 0 0% 7% / 1;
+    --foreground: 0 0% 98% / 1;
+    --card: 56 95% 96% / 1;                     /* supernova-50 */
+    --card-foreground: 47 67% 22% / 1;          /* supernova-900 */
+    --popover: 56 95% 96% / 1;                  /* supernova-50 */
+    --popover-foreground: 47 67% 22% / 1;       /* supernova-900 */
+    --primary: 49 96% 49% / 1;                  /* supernova-400 */
+    --primary-foreground: 56 95% 96% / 1;       /* supernova-50 */
+    --secondary: 47 96% 40% / 1;                /* supernova-600 */
+    --secondary-foreground: 56 95% 96% / 1;     /* supernova-50 */
+    --muted: 47 88% 32% / 1;                    /* supernova-700 */
+    --muted-foreground: 49 98% 70% / 1;         /* supernova-200 */
+    --accent: 49 96% 49% / 1;                   /* supernova-400 */
+    --accent-foreground: 56 95% 96% / 1;        /* supernova-50 */
+    --destructive: 47 67% 22% / 1;              /* supernova-900 */
+    --destructive-foreground: 56 95% 96% / 1;   /* supernova-50 */
+    --border: 47 88% 32% / 1;                   /* supernova-700 */
+    --input: 47 88% 32% / 1;                    /* supernova-700 */
+    --ring: 49 98% 58% / 1;                     /* supernova-300 */
+    --radius: 0.5rem;
   }
 }
 

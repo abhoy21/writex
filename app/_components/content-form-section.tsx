@@ -12,8 +12,10 @@ import { z } from "zod";
 
 export default function ContentFormSection({
   selectedTemplate,
+  onChange
 }: {
   selectedTemplate: Template;
+  onChange: (content: string) => void;
 }): React.JSX.Element {
   const formSchema = z.object(
     Object.fromEntries(
@@ -27,7 +29,7 @@ export default function ContentFormSection({
   );
 
   const token = localStorage.getItem("token");
-
+  
   const {
     register,
     handleSubmit,
@@ -39,22 +41,19 @@ export default function ContentFormSection({
   });
 
   const onSubmit = async (data: z.infer<typeof formSchema>) => {
+    console.log("data\n", data);
     try {
       const submitDataFormat = {
-        topic: data.topic,
-        outline: data.outline || "",
+        topic: data.input || "" ,
+        outline: data.textarea || "",
         template: selectedTemplate.slug,
         category: selectedTemplate.category,
         aiPrompt: selectedTemplate.aiPrompt,
       };
-      console.log("Submitting data:", submitDataFormat);
-      console.log("topic\n", data.topic);
-      console.log("outline\n", data.outline);
+      
       const response = await axios.post(
         `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/v1/content/create-content`,
-
         submitDataFormat,
-
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -64,10 +63,11 @@ export default function ContentFormSection({
       );
 
       if (response.status === 200) {
-        console.log(response.data);
+        console.log("response.data.aiResponse\n", response.data);
+       onChange(response.data.aiResponse);
       }
 
-      console.log(data);
+     
       reset();
     } catch (error) {
       console.error("Form submission error:", error);
