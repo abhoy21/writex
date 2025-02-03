@@ -67,7 +67,7 @@ const templateData = [
     icon: "https://cdn-icons-png.flaticon.com/128/402/402075.png",
     slug: "youtube-seo-title",
     aiPrompt:
-      "Give me Best SEO optimized high ranked 5 title ideas bullet wise only bases on keywords and outline and give me result in HTML tags format",
+      "Give me Best SEO optimized high ranked 5 title ideas bullet wise only bases on keywords and outline and give me result point wise",
     form: [
       {
         label: "Enter your youtube video topic keyowords",
@@ -252,7 +252,7 @@ const templateData = [
     category: "Coding",
     slug: "write-code",
     aiPrompt:
-      "Depends on user code Description write a code and give output in rich text editor format in code block",
+      "Write code that works with user-provided input and the mentioned programming language (default language is python) and show both the code and its expected output. Present the code in a formatted code block using markdown syntax. Include explanatory comments and example outputs demonstrating how the code behaves with different inputs.",
     form: [
       {
         label: "Enter description of code you want along with Programming Lang",
