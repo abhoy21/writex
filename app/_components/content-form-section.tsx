@@ -9,14 +9,20 @@ import axios from "axios";
 import Image from "next/image";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
+import { UsageContext } from "../(context)/usage";
+import { useContext } from "react";
+import { useRouter } from "next/navigation";
 
 export default function ContentFormSection({
   selectedTemplate,
-  onChange
+  onChange,
 }: {
   selectedTemplate: Template;
   onChange: (content: string) => void;
 }): React.JSX.Element {
+  const { creditUsed, setCreditused } = useContext(UsageContext);
+  const router = useRouter();
+  const token = localStorage.getItem("token");
   const formSchema = z.object(
     Object.fromEntries(
       selectedTemplate.form.map((item) => [
@@ -24,12 +30,10 @@ export default function ContentFormSection({
         item.required
           ? z.string().nonempty("This field is required")
           : z.string().optional(),
-      ]),
-    ),
+      ])
+    )
   );
 
-  const token = localStorage.getItem("token");
-  
   const {
     register,
     handleSubmit,
@@ -41,73 +45,75 @@ export default function ContentFormSection({
   });
 
   const onSubmit = async (data: z.infer<typeof formSchema>) => {
-    console.log("data\n", data);
-    try {
-      const submitDataFormat = {
-        topic: data.input || "" ,
-        outline: data.textarea || "",
-        template: selectedTemplate.slug,
-        category: selectedTemplate.category,
-        aiPrompt: selectedTemplate.aiPrompt,
-      };
-      
-      const response = await axios.post(
-        `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/v1/content/create-content`,
-        submitDataFormat,
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-            "Content-Type": "application/json",
-          },
-        },
-      );
+    if (creditUsed < 7000) {
+      try {
+        const submitDataFormat = {
+          topic: data.input || "",
+          outline: data.textarea || "",
+          template: selectedTemplate.slug,
+          category: selectedTemplate.category,
+          aiPrompt: selectedTemplate.aiPrompt,
+        };
 
-      if (response.status === 200) {
-        console.log("response.data.aiResponse\n", response.data);
-       onChange(response.data.aiResponse);
+        const response = await axios.post(
+          `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/v1/content/create-content`,
+          submitDataFormat,
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+              "Content-Type": "application/json",
+            },
+          }
+        );
+
+        if (response.status === 200) {
+          console.log("response.data.aiResponse\n", response.data);
+          onChange(response.data.aiResponse);
+        }
+
+        reset();
+      } catch (error) {
+        console.error("Form submission error:", error);
       }
-
-     
-      reset();
-    } catch (error) {
-      console.error("Form submission error:", error);
+    } else {
+      router.push("/dashboard/billing");
     }
   };
 
   return (
-    <div className='p-4 rounded-xl flex flex-col gap-4 bg-gradient-to-br from-neutral-900 via-neutral-950 to-neutral-900 border border-supernova-700'>
+    <div className="p-4 rounded-xl flex flex-col gap-4 bg-gradient-to-br from-neutral-900 via-neutral-950 to-neutral-900 border border-supernova-700">
       <Image
         src={selectedTemplate.icon}
         alt={selectedTemplate.name}
         width={64}
         height={64}
       />
-      <h1 className='text-3xl font-bold text-supernova-300'>
+      <h1 className="text-3xl font-bold text-supernova-300">
         {selectedTemplate.name}
       </h1>
-      <p className='text-sm text-neutral-500'>{selectedTemplate.desc}</p>
+      <p className="text-sm text-neutral-500">{selectedTemplate.desc}</p>
 
       <form
-        className='space-y-4 mt-6'
+        className="space-y-4 mt-6"
         onSubmit={handleSubmit(onSubmit)}
         noValidate
       >
         {selectedTemplate.form.map((item) => (
-          <div key={item.name} className='mt-2 mb-8 flex flex-col gap-2'>
+          <div key={item.name} className="mt-2 mb-8 flex flex-col gap-2">
             <label
               htmlFor={item.name}
-              className='block text-sm font-montserrat'
+              className="block text-sm font-montserrat"
             >
               {item.label}
-              {item.required && <span className='text-red-500 ml-1'>*</span>}
+              {item.required && <span className="text-red-500 ml-1">*</span>}
             </label>
 
             {item.field === "input" ? (
               <Input
                 {...register(item.name)}
                 id={item.name}
-                placeholder='Enter your text here'
-                type='text'
+                placeholder="Enter your text here"
+                type="text"
                 aria-invalid={errors[item.name] ? "true" : "false"}
                 className={errors[item.name] ? "border-red-500" : ""}
               />
@@ -115,14 +121,14 @@ export default function ContentFormSection({
               <Textarea
                 {...register(item.name)}
                 id={item.name}
-                placeholder='Enter your text here'
+                placeholder="Enter your text here"
                 aria-invalid={errors[item.name] ? "true" : "false"}
                 className={errors[item.name] ? "border-red-500" : ""}
               />
             )}
 
             {errors[item.name] && (
-              <p className='text-red-500 text-sm mt-1'>
+              <p className="text-red-500 text-sm mt-1">
                 {errors[item.name]?.message}
               </p>
             )}
@@ -130,8 +136,8 @@ export default function ContentFormSection({
         ))}
 
         <Button
-          type='submit'
-          className='w-full py-4 text-supernova-950 hover:text-supernova-500'
+          type="submit"
+          className="w-full py-4 text-supernova-950 hover:text-supernova-500"
           disabled={isSubmitting || !isValid}
         >
           {isSubmitting ? "Generating..." : "Generate"}

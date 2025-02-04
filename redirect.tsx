@@ -12,9 +12,13 @@ export function Redirect(): React.JSX.Element {
 
     const protectedRoutes = ["/dashboard", "/history"];
 
+    // Check if it's a dashboard route but not the billing route
+    const isDashboardRoute =
+      pathname.startsWith("/dashboard") && pathname !== "/dashboard/billing";
+
     if (protectedRoutes.includes(pathname) && !token) {
       router.push("/auth/signin");
-    } else if (pathname.startsWith("/dashboard/content/") && !token) {
+    } else if (isDashboardRoute && !token) {
       router.push("/auth/signin");
     } else if (
       token &&

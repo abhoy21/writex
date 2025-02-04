@@ -134,6 +134,9 @@ export default function HistoryTable(): React.JSX.Element {
               <TableHead className="text-supernova-950 w-2/4 md:w-2/5">
                 Response
               </TableHead>
+              <TableHead className="text-supernova-950 w-2/4 md:w-2/5 text-center">
+                Word Count
+              </TableHead>
               <TableHead className="text-supernova-950 w-1/6 md:w-1/6 text-center ">
                 Date Created
               </TableHead>
@@ -156,6 +159,9 @@ export default function HistoryTable(): React.JSX.Element {
                   <div className="line-clamp-2 break-words">
                     {content.response}
                   </div>
+                </TableCell>
+                <TableCell className="text-supernova-500 max-w-[50px] text-center truncate">
+                  {content.response.split(" ").length}
                 </TableCell>
                 <TableCell className="text-supernova-700 min-w-[100px] max-w-[150px] truncate text-center">
                   {content.createdAt.split("T")[0]}

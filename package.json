@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@hookform/resolvers": "^3.10.0",
+    "@radix-ui/react-alert-dialog": "^1.1.5",
     "@radix-ui/react-slot": "^1.1.1",
     "@tailwindcss/postcss": "^4.0.3",
     "@tiptap/extension-bold": "^2.11.5",
