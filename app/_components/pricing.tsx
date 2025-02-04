@@ -158,7 +158,7 @@ export default function Pricing(): React.JSX.Element {
                 Content performance analytics
               </li>
             </ul>
-            <Link href="/dashboard/billing">
+            <Link href="/auth/signin">
               <button className="w-full py-3 px-6 rounded-lg bg-supernova-500 text-[#181818] hover:bg-supernova-950 transition-colors">
                 Upgrade Now
               </button>

@@ -1,7 +1,106 @@
+"use client";
+import { Button } from "@/components/ui/button";
+import { Alert, AlertDescription } from "@/components/ui/alert";
+import axios from "axios";
+import { useEffect, useState } from "react";
+import { Loader2 } from "lucide-react";
+
 export default function Billing(): React.JSX.Element {
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const [success, setSuccess] = useState(false);
+
+  const enableSubscription = async () => {
+    setLoading(true);
+    setError(null);
+
+    try {
+      const token = localStorage.getItem("token");
+
+      if (!token) {
+        throw new Error("Authentication token not found. Please log in again.");
+      }
+
+      const response = await axios.post(
+        `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/v1/subscription/create-subscription`,
+        {},
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+
+      if (response.status === 200) {
+        onPaymentSuccess(response.data.id);
+        setSuccess(true);
+      }
+    } catch (error) {
+      if (axios.isAxiosError(error)) {
+        setError(
+          error.response?.data?.message ||
+            "Failed to enable subscription. Please try again later."
+        );
+      } else {
+        setError("An unexpected error occurred. Please try again.");
+      }
+    }
+  };
+
+  const onPaymentSuccess = (id: string) => {
+    //@ts-ignore
+    if (!window.Razorpay) {
+      setError("Razorpay SDK not loaded. Please refresh the page.");
+      return;
+    }
+    const options = {
+      key: process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID!,
+      subscription_id: id,
+      name: "WriteX",
+      quantity: 1,
+      description:
+        "WriteX Professional-Subscription - this subscriptions will be charged on a 3-month interval basis",
+      handler: async (response: any) => {
+        console.log("response\n", response);
+        setLoading(false);
+      },
+    };
+
+    //@ts-ignore
+    const razorpay = new window.Razorpay(options);
+    console.log("razorpay\n", razorpay);
+    razorpay.open();
+  };
+
+  useEffect(() => {
+    const script = document.createElement("script");
+    script.src = "https://checkout.razorpay.com/v1/checkout.js";
+    script.async = true;
+    document.body.appendChild(script);
+
+    return () => {
+      document.body.removeChild(script);
+    };
+  }, []);
+
   return (
     <section id="pricing" className="py-20 bg-neutral-900">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {error && (
+          <Alert variant="destructive" className="mb-6">
+            <AlertDescription>{error}</AlertDescription>
+          </Alert>
+        )}
+
+        {success && (
+          <Alert className="mb-6 bg-green-500/15 text-green-500 border-green-500/50">
+            <AlertDescription>
+              Subscription activated successfully! You now have access to all
+              Pro features.
+            </AlertDescription>
+          </Alert>
+        )}
+
         <div className="text-center mb-16 animate__animated animate__fadeIn">
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
             Choose Your Content Creation Plan
@@ -10,13 +109,14 @@ export default function Billing(): React.JSX.Element {
             Unlock the power of AI-driven content optimization
           </p>
         </div>
+
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* Free Plan */}
           <div className="bg-neutral-800 rounded-2xl p-8 border border-neutral-700 hover:border-supernova-500 transition-all duration-300 animate__animated animate__fadeInUp">
             <div className="text-center mb-8">
               <h3 className="text-xl font-semibold text-white mb-2">Starter</h3>
               <div className="flex justify-center items-baseline mb-4">
-                <span className="text-4xl font-bold text-white">$0</span>
+                <span className="text-4xl font-bold text-white">₹0</span>
                 <span className="text-gray-400 ml-1">/month</span>
               </div>
               <p className="text-gray-400">Perfect for content beginners</p>
@@ -71,10 +171,14 @@ export default function Billing(): React.JSX.Element {
                 3 content templates
               </li>
             </ul>
-            <button className="w-full py-3 px-6 rounded-lg bg-neutral-700 text-white hover:bg-neutral-600 transition-colors">
+            <Button
+              className="w-full py-3 px-6 rounded-lg bg-neutral-700 text-white hover:bg-neutral-600 transition-colors"
+              disabled
+            >
               Current Plan
-            </button>
+            </Button>
           </div>
+
           {/* Pro Plan */}
           <div className="bg-neutral-800 rounded-2xl p-8 border-2 border-supernova-500 relative transform scale-105 z-10 animate__animated animate__fadeInUp">
             <div className="absolute top-0 right-0 bg-supernova-500 text-white px-3 py-1 rounded-bl-lg rounded-tr-lg text-sm font-medium">
@@ -156,10 +260,16 @@ export default function Billing(): React.JSX.Element {
                 Content performance analytics
               </li>
             </ul>
-            <button className="w-full py-3 px-6 rounded-lg bg-supernova-500 text-[#181818] hover:bg-supernova-950 transition-colors">
-              Upgrade Now
-            </button>
+            <Button
+              onClick={enableSubscription}
+              disabled={loading}
+              className="w-full py-3 px-6 rounded-lg bg-supernova-500 text-[#181818] hover:bg-supernova-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+            >
+              {loading && <Loader2 className="w-5 h-5 mr-2 animate-spin" />}
+              {loading ? "Processing..." : "Upgrade Now"}
+            </Button>
           </div>
+
           {/* Enterprise Plan */}
           <div className="bg-neutral-800 rounded-2xl p-8 border border-neutral-700 hover:border-supernova-500 transition-all duration-300 animate__animated animate__fadeInUp">
             <div className="text-center mb-8">
@@ -238,9 +348,9 @@ export default function Billing(): React.JSX.Element {
                 Dedicated success manager
               </li>
             </ul>
-            <button className="w-full py-3 px-6 rounded-lg bg-neutral-700 text-white hover:bg-neutral-600 transition-colors">
+            <Button className="w-full py-3 px-6 rounded-lg bg-neutral-700 text-white hover:bg-neutral-600 transition-colors">
               Contact Sales
-            </button>
+            </Button>
           </div>
         </div>
       </div>

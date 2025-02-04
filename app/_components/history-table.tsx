@@ -59,6 +59,24 @@ export default function HistoryTable(): React.JSX.Element {
     fetchData();
   }, [token]);
 
+  const handleDelete = async (id: string) => {
+    try {
+      const response = await axios.delete(
+        `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/v1/content/delete-content/${id}`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      if (response.status === 200) {
+        setData(data.filter((content) => content.id !== id));
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   const lastIndex = currentPage * itemsPerPage;
   const firstIndex = lastIndex - itemsPerPage;
 
@@ -146,7 +164,7 @@ export default function HistoryTable(): React.JSX.Element {
             </TableRow>
           </TableHeader>
           <TableBody>
-            {data.map((content) => (
+            {currentItems.map((content) => (
               <TableRow key={content.id}>
                 <TableCell className="text-supernova-500 max-w-[50px] truncate">
                   {content.id}
@@ -170,7 +188,7 @@ export default function HistoryTable(): React.JSX.Element {
                   <div className="flex items-center justify-end gap-2 hover:text-supernova-500">
                     <Button
                       onClick={() => {
-                        console.log("content.id", content.id);
+                        handleDelete(content.id);
                       }}
                     >
                       <Trash2 className="w-4 h-4 text-red-500 " />

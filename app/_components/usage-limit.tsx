@@ -5,11 +5,12 @@ import { Alert } from "@/components/ui/alert";
 import { Button } from "@/components/ui/button";
 import axios from "axios";
 import { UsageContext } from "../(context)/usage";
+import Link from "next/link";
 
 export default function UsageLimit(): React.JSX.Element {
   const { creditUsed, setCreditused } = useContext(UsageContext);
   const token = localStorage.getItem("token");
-  const TOTAL_LIMIT = 7000;
+  const TOTAL_LIMIT = 5000;
 
   useEffect(() => {
     const fetchData = async () => {
@@ -49,11 +50,11 @@ export default function UsageLimit(): React.JSX.Element {
   const remainingPercentage = Math.max(100 - usedPercentage, 0);
 
   return (
-    <div className="p-2 rounded-xl bg-gradient-to-br from-supernova-100 to-supernova-500 border border-supernova-200">
+    <div className="p-2 rounded-xl bg-gradient-to-br from-neutral-900 via-neutral-950 to-neutral-900 shadow-sm shadow-supernova-900/45">
       <div className="space-y-4">
         <div className="flex items-center justify-between">
-          <h2 className="text-base font-semibold text-gray-900">Usage Limit</h2>
-          <span className="text-sm font-medium text-supernova-800">
+          <h2 className="text-base font-semibold text-gray-400">Usage Limit</h2>
+          <span className="text-sm font-medium text-gray-400">
             {usedPercentage}% Used
           </span>
         </div>
@@ -61,7 +62,7 @@ export default function UsageLimit(): React.JSX.Element {
         <div className="relative">
           <div className="h-3 w-full bg-gradient-to-l from-supernova-50 to-supernova-300 rounded-full overflow-hidden">
             <div
-              className="h-full bg-supernova-700 rounded-full transition-all duration-500 ease-in-out"
+              className="h-full bg-supernova-500 rounded-full transition-all duration-500 ease-in-out"
               style={{ width: `${remainingPercentage}%` }}
             />
           </div>
@@ -82,12 +83,14 @@ export default function UsageLimit(): React.JSX.Element {
         </Alert>
       </div>
 
-      <Button
-        className="w-full text-supernova-950 font-montserrat hover:text-supernova-500 hover:bg-neutral-900"
-        size="sm"
-      >
-        Upgrade Plan
-      </Button>
+      <Link href="/dashboard/billing">
+        <Button
+          className="w-full text-supernova-950 font-montserrat hover:text-supernova-500 hover:bg-neutral-900 mt-2"
+          size="sm"
+        >
+          Upgrade Plan
+        </Button>
+      </Link>
     </div>
   );
 }
