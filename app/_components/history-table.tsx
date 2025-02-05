@@ -55,9 +55,7 @@ export default function HistoryTable(): React.JSX.Element {
 
   const handleDelete = async (id: string) => {
     try {
-      const response = await axios.delete(
-        `/api/v1/content/delete-content/${id}`
-      );
+      const response = await axios.post(`/api/v1/content/delete-content/${id}`);
       if (response.status === 200) {
         setData(data.filter((content) => content.id !== id));
         setUpdateCreditUsage(Date.now());
