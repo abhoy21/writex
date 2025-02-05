@@ -3,22 +3,21 @@ import { client } from "@/lib/prisma";
 import { getServerSession } from "next-auth";
 import { NextRequest, NextResponse } from "next/server";
 
-interface RouteContext {
-  params: {
-    "content-id": string;
-  };
-}
-
-export async function POST(request: NextRequest, { params }: RouteContext) {
+export async function POST(req: NextRequest) {
   try {
     const session = await getServerSession(authOptions);
     if (!session?.user?.id) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
+    const url = new URL(req.url);
+    const pathName = url.pathname;
+    const parts = pathName.split("/");
+    const contentId = parts[parts.length - 1];
+
     await client.content.delete({
       where: {
-        id: params["content-id"],
+        id: contentId,
         userId: session.user.id,
       },
     });
