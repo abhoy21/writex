@@ -9,20 +9,19 @@ import Link from "next/link";
 import { UpgradeUserContext } from "../(context)/upgrade-user";
 import { UpdateCreditUsageContext } from "../(context)/update-credit-usage";
 
+interface Content {
+  response: string | null;
+}
+
 export default function UsageLimit(): React.JSX.Element {
   const { creditUsed, setCreditused } = useContext(UsageContext);
   const { upgradeUser, setUpgradeUser } = useContext(UpgradeUserContext);
-  const { updateCreditUsage, setUpdateCreditUsage } = useContext(
-    UpdateCreditUsageContext
-  );
+  const { updateCreditUsage } = useContext(UpdateCreditUsageContext);
   const [isLoading, setIsLoading] = useState(true);
 
   const TOTAL_LIMIT = upgradeUser ? 12000 : 5000;
 
   useEffect(() => {
-    const token = localStorage.getItem("token");
-    if (!token) return;
-
     const getStatus = async () => {
       try {
         const response = await axios.get("/api/v1/subscription/get-pro-user");
@@ -42,7 +41,7 @@ export default function UsageLimit(): React.JSX.Element {
           const data = response.data.contents;
           const totalLength =
             data.length > 0
-              ? data.reduce((acc: number, content: any) => {
+              ? data.reduce((acc: number, content: Content) => {
                   const responseLength = content.response
                     ? content.response.split(" ").length
                     : 0;
@@ -113,7 +112,7 @@ export default function UsageLimit(): React.JSX.Element {
             <ArrowUpCircle className="h-5 w-5 md:h-8 md:w-8 text-supernova-700" />
             <div className="space-y-1">
               <p className="text-sm font-medium text-gray-900">
-                You've {remainingPercentage}% of your plan limit remaining
+                You&apos;ve {remainingPercentage}% of your plan limit remaining
               </p>
               <p className="text-sm text-supernova-700">
                 Upgrade your plan to continue using WriteX with full features!

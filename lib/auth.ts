@@ -6,6 +6,7 @@ import GoogleProvider from "next-auth/providers/google";
 import { generatePassword } from "./generate-password";
 import { client } from "./prisma";
 import { PrismaAdapter } from "@next-auth/prisma-adapter";
+import { AccountProvider } from "@/types/type";
 
 export const authOptions: NextAuthOptions = {
   adapter: PrismaAdapter(client),
@@ -150,7 +151,7 @@ export const authOptions: NextAuthOptions = {
 
           if (existingUser) {
             const existingProviderAccount = existingUser.accounts.find(
-              (acc: any) => acc.provider === account.provider
+              (acc: AccountProvider) => acc.provider === account.provider
             );
 
             if (!existingProviderAccount) {
@@ -172,6 +173,7 @@ export const authOptions: NextAuthOptions = {
         }
         return true;
       } catch (error) {
+        console.error(error);
         return false;
       }
     },

@@ -1,3 +1,6 @@
 import { createContext } from "react";
 
-export const UsageContext = createContext<any>(0);
+export const UsageContext = createContext<UsageContextType>({
+  creditUsed: 0,
+  setCreditused: () => {},
+});

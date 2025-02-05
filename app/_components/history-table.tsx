@@ -32,7 +32,6 @@ export default function HistoryTable(): React.JSX.Element {
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
   const itemsPerPage = 10;
-  const token = localStorage.getItem("token");
 
   useEffect(() => {
     const fetchData = async () => {
@@ -52,7 +51,7 @@ export default function HistoryTable(): React.JSX.Element {
     };
 
     fetchData();
-  }, [token]);
+  }, [updateCreditUsage]);
 
   const handleDelete = async (id: string) => {
     try {
@@ -77,7 +76,7 @@ export default function HistoryTable(): React.JSX.Element {
     const pageNumbers = [];
     const maxButtons = 5;
     let startPage = Math.max(1, currentPage - Math.floor(maxButtons / 2));
-    let lastPage = Math.min(totalPages, startPage + maxButtons - 1);
+    const lastPage = Math.min(totalPages, startPage + maxButtons - 1);
 
     if (lastPage - startPage + 1 < maxButtons) {
       startPage = Math.max(1, lastPage - maxButtons + 1);

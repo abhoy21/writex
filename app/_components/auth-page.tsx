@@ -3,10 +3,10 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Eye, EyeOff, Github, GithubIcon } from "lucide-react";
+import { Eye, EyeOff } from "lucide-react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useRef, useState } from "react";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { signinSchema, signupSchema } from "../../types/type";
@@ -61,7 +61,7 @@ export default function AuthPage({
       router.push("/dashboard");
       router.refresh();
       reset();
-    } catch (error: any) {
+    } catch (error: unknown) {
       console.error("Authentication error:", error);
       reset();
     }

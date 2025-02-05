@@ -5,6 +5,7 @@ import DashboardHeader from "../_components/dashboard-header";
 import DashboardSidebar from "../_components/dashboard-sidebar";
 import { UpgradeUserContext } from "../(context)/upgrade-user";
 import { UpdateCreditUsageContext } from "../(context)/update-credit-usage";
+import { UpdateCreditUsageContextType } from "@/types/type";
 
 export default function DashboardLayout({
   children,
@@ -13,7 +14,8 @@ export default function DashboardLayout({
 }>): React.JSX.Element {
   const [creditUsed, setCreditused] = useState(0);
   const [upgradeUser, setUpgradeUser] = useState(false);
-  const [updateCreditUsage, setUpdateCreditUsage] = useState<any>();
+  const [updateCreditUsage, setUpdateCreditUsage] =
+    useState<UpdateCreditUsageContextType>();
   return (
     <UsageContext.Provider value={{ creditUsed, setCreditused }}>
       <UpgradeUserContext.Provider value={{ upgradeUser, setUpgradeUser }}>

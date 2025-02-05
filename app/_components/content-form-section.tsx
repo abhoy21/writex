@@ -22,13 +22,11 @@ export default function ContentFormSection({
   selectedTemplate: Template;
   onChange: (content: string) => void;
 }): React.JSX.Element {
-  const { creditUsed, setCreditused } = useContext(UsageContext);
-  const { upgradeUser, setUpgradeUser } = useContext(UpgradeUserContext);
-  const { updateCreditUsage, setUpdateCreditUsage } = useContext(
-    UpdateCreditUsageContext
-  );
+  const { creditUsed } = useContext(UsageContext);
+  const { upgradeUser } = useContext(UpgradeUserContext);
+  const { setUpdateCreditUsage } = useContext(UpdateCreditUsageContext);
   const router = useRouter();
-  const token = localStorage.getItem("token");
+
   const formSchema = z.object(
     Object.fromEntries(
       selectedTemplate.form.map((item) => [

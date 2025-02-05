@@ -1,10 +1,9 @@
 import { authOptions } from "@/lib/auth";
 import { client } from "@/lib/prisma";
-import { NextApiRequest } from "next";
 import { getServerSession } from "next-auth";
 import { NextResponse } from "next/server";
 
-export async function GET(req: NextApiRequest) {
+export async function GET() {
   try {
     const session = await getServerSession(authOptions);
 
@@ -34,7 +33,7 @@ export async function GET(req: NextApiRequest) {
     );
   } catch (error) {
     return NextResponse.json(
-      { error: "Internal Server Error" },
+      { error: "Internal Server Error", errorMessage: error },
       { status: 500 }
     );
   }

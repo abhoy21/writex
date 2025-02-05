@@ -9,7 +9,7 @@ import { UpgradeUserContext } from "@/app/(context)/upgrade-user";
 
 export default function Billing(): React.JSX.Element {
   const router = useRouter();
-  const { upgradeUser, setUpgradeUser } = useContext(UpgradeUserContext);
+  const { upgradeUser } = useContext(UpgradeUserContext);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState(false);
@@ -44,7 +44,7 @@ export default function Billing(): React.JSX.Element {
   };
 
   const onPaymentSuccess = (id: string) => {
-    //@ts-ignore
+    //@ts-expect-error
     if (!window.Razorpay) {
       setError("Razorpay SDK not loaded. Please refresh the page.");
       return;
@@ -58,7 +58,7 @@ export default function Billing(): React.JSX.Element {
       quantity: 1,
       description:
         "WriteX Professional-Subscription - this subscriptions will be charged on a 3-month interval basis",
-      handler: async (response: any) => {
+      handler: async (response: unknown) => {
         await saveToDB({
           subId: id,
           paymentId: response.razorpay_payment_id,
@@ -67,7 +67,7 @@ export default function Billing(): React.JSX.Element {
       },
     };
 
-    //@ts-ignore
+    //@ts-expect-error
     const razorpay = new window.Razorpay(options);
     console.log("razorpay\n", razorpay);
     razorpay.open();
