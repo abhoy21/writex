@@ -4,8 +4,8 @@ import { getServerSession } from "next-auth";
 import { NextRequest, NextResponse } from "next/server";
 
 export async function POST(
-  req: NextRequest,
-  { params }: { params: { "content-id": string } }
+  request: NextRequest,
+  context: { params: { "content-id": string } }
 ) {
   try {
     const session = await getServerSession(authOptions);
@@ -15,7 +15,7 @@ export async function POST(
 
     await client.content.delete({
       where: {
-        id: params["content-id"],
+        id: context.params["content-id"],
         userId: session.user.id,
       },
     });
