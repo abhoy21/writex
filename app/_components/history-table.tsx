@@ -10,14 +10,9 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import axios from "axios";
-import {
-  ChevronLeft,
-  ChevronRight,
-  CopyIcon,
-  Delete,
-  Trash2,
-} from "lucide-react";
-import { useEffect, useState } from "react";
+import { ChevronLeft, ChevronRight, Trash2 } from "lucide-react";
+import { useContext, useEffect, useState } from "react";
+import { UpdateCreditUsageContext } from "../(context)/update-credit-usage";
 
 interface ContentProps {
   id: string;
@@ -31,6 +26,9 @@ interface ContentProps {
 
 export default function HistoryTable(): React.JSX.Element {
   const [data, setData] = useState<ContentProps[]>([]);
+  const { updateCreditUsage, setUpdateCreditUsage } = useContext(
+    UpdateCreditUsageContext
+  );
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
   const itemsPerPage = 10;
@@ -39,17 +37,14 @@ export default function HistoryTable(): React.JSX.Element {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(
-          `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/v1/content/get-contents`,
-          {
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
-          }
-        );
+        const response = await axios.get("/api/v1/content/get-contents");
         if (response.status === 200) {
-          setData(response.data);
-          setTotalPages(Math.ceil(response.data.length / itemsPerPage));
+          if (response.data.contents.length > 0) {
+            setData(response.data.contents);
+            setTotalPages(
+              Math.ceil(response.data.contents.length / itemsPerPage)
+            );
+          }
         }
       } catch (error) {
         console.log(error);
@@ -62,15 +57,11 @@ export default function HistoryTable(): React.JSX.Element {
   const handleDelete = async (id: string) => {
     try {
       const response = await axios.delete(
-        `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/v1/content/delete-content/${id}`,
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
+        `/api/v1/content/delete-content/${id}`
       );
       if (response.status === 200) {
         setData(data.filter((content) => content.id !== id));
+        setUpdateCreditUsage(Date.now());
       }
     } catch (error) {
       console.log(error);

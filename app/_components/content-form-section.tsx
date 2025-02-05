@@ -12,6 +12,8 @@ import { z } from "zod";
 import { UsageContext } from "../(context)/usage";
 import { useContext } from "react";
 import { useRouter } from "next/navigation";
+import { UpgradeUserContext } from "../(context)/upgrade-user";
+import { UpdateCreditUsageContext } from "../(context)/update-credit-usage";
 
 export default function ContentFormSection({
   selectedTemplate,
@@ -21,6 +23,10 @@ export default function ContentFormSection({
   onChange: (content: string) => void;
 }): React.JSX.Element {
   const { creditUsed, setCreditused } = useContext(UsageContext);
+  const { upgradeUser, setUpgradeUser } = useContext(UpgradeUserContext);
+  const { updateCreditUsage, setUpdateCreditUsage } = useContext(
+    UpdateCreditUsageContext
+  );
   const router = useRouter();
   const token = localStorage.getItem("token");
   const formSchema = z.object(
@@ -45,7 +51,10 @@ export default function ContentFormSection({
   });
 
   const onSubmit = async (data: z.infer<typeof formSchema>) => {
-    if (creditUsed < 7000) {
+    if (
+      (creditUsed < 5000 && !upgradeUser) ||
+      (upgradeUser && creditUsed < 12000)
+    ) {
       try {
         const submitDataFormat = {
           topic: data.input || "",
@@ -56,19 +65,14 @@ export default function ContentFormSection({
         };
 
         const response = await axios.post(
-          `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/v1/content/create-content`,
-          submitDataFormat,
-          {
-            headers: {
-              Authorization: `Bearer ${token}`,
-              "Content-Type": "application/json",
-            },
-          }
+          "/api/v1/content/create-content",
+          submitDataFormat
         );
 
         if (response.status === 200) {
           console.log("response.data.aiResponse\n", response.data);
           onChange(response.data.aiResponse);
+          setUpdateCreditUsage(Date.now());
         }
 
         reset();
@@ -138,7 +142,12 @@ export default function ContentFormSection({
         <Button
           type="submit"
           className="w-full py-4 text-supernova-950 hover:text-supernova-500"
-          disabled={isSubmitting || !isValid}
+          disabled={
+            isSubmitting ||
+            !isValid ||
+            (creditUsed >= 5000 && !upgradeUser) ||
+            (upgradeUser && creditUsed >= 12000)
+          }
         >
           {isSubmitting ? "Generating..." : "Generate"}
         </Button>

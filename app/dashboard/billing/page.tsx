@@ -2,10 +2,14 @@
 import { Button } from "@/components/ui/button";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Loader2 } from "lucide-react";
+import { useRouter } from "next/navigation";
+import { UpgradeUserContext } from "@/app/(context)/upgrade-user";
 
 export default function Billing(): React.JSX.Element {
+  const router = useRouter();
+  const { upgradeUser, setUpgradeUser } = useContext(UpgradeUserContext);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState(false);
@@ -15,27 +19,19 @@ export default function Billing(): React.JSX.Element {
     setError(null);
 
     try {
-      const token = localStorage.getItem("token");
-
-      if (!token) {
-        throw new Error("Authentication token not found. Please log in again.");
-      }
-
       const response = await axios.post(
-        `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/v1/subscription/create-subscription`,
-        {},
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
+        "/api/v1/subscription/create-subscription",
+        {}
       );
 
       if (response.status === 200) {
-        onPaymentSuccess(response.data.id);
+        console.log("response.data\n", response.data);
+        onPaymentSuccess(response.data.response.id);
         setSuccess(true);
+        setLoading(false);
       }
     } catch (error) {
+      setLoading(false);
       if (axios.isAxiosError(error)) {
         setError(
           error.response?.data?.message ||
@@ -57,11 +53,16 @@ export default function Billing(): React.JSX.Element {
       key: process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID!,
       subscription_id: id,
       name: "WriteX",
+      amount: (199 * 100).toString(),
+      Currency: "INR",
       quantity: 1,
       description:
         "WriteX Professional-Subscription - this subscriptions will be charged on a 3-month interval basis",
       handler: async (response: any) => {
-        console.log("response\n", response);
+        await saveToDB({
+          subId: id,
+          paymentId: response.razorpay_payment_id,
+        });
         setLoading(false);
       },
     };
@@ -70,6 +71,27 @@ export default function Billing(): React.JSX.Element {
     const razorpay = new window.Razorpay(options);
     console.log("razorpay\n", razorpay);
     razorpay.open();
+  };
+
+  const saveToDB = async ({
+    subId,
+    paymentId,
+  }: {
+    subId: string;
+    paymentId: string;
+  }) => {
+    const data = {
+      subscriptionId: subId,
+      paymentId: paymentId,
+    };
+    console.log("data\n", data);
+    const response = await axios.post(
+      "/api/v1/subscription/save-payment-info",
+      data
+    );
+    if (response.status === 200) {
+      router.push("/dashboard");
+    }
   };
 
   useEffect(() => {
@@ -175,7 +197,7 @@ export default function Billing(): React.JSX.Element {
               className="w-full py-3 px-6 rounded-lg bg-neutral-700 text-white hover:bg-neutral-600 transition-colors"
               disabled
             >
-              Current Plan
+              {!upgradeUser ? "Current Plan" : "Free Plan"}
             </Button>
           </div>
 
@@ -266,7 +288,11 @@ export default function Billing(): React.JSX.Element {
               className="w-full py-3 px-6 rounded-lg bg-supernova-500 text-[#181818] hover:bg-supernova-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
             >
               {loading && <Loader2 className="w-5 h-5 mr-2 animate-spin" />}
-              {loading ? "Processing..." : "Upgrade Now"}
+              {loading
+                ? "Processing..."
+                : upgradeUser
+                ? "Current Plan"
+                : "Upgrade Now"}
             </Button>
           </div>
 

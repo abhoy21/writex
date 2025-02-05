@@ -1,11 +1,10 @@
 "use client";
 import { CreditCard, History, Home, LogOut } from "lucide-react";
-import { usePathname, useRouter } from "next/navigation";
-import { useEffect } from "react";
+import { usePathname } from "next/navigation";
 import Logo from "./logo";
 import Link from "next/link";
 import UsageLimit from "./usage-limit";
-import { Button } from "@/components/ui/button";
+import { signOut } from "next-auth/react";
 
 const MenuList = [
   {
@@ -32,10 +31,9 @@ const MenuList = [
 
 export default function DashboardSidebar(): React.JSX.Element {
   const path = usePathname();
-  const router = useRouter();
+
   const handleSignOut = () => {
-    localStorage.removeItem("token");
-    router.push("/");
+    signOut({ callbackUrl: "/", redirect: true });
   };
   return (
     <div className="h-screen relative p-4 shadow-sm shadow-supernova-900/45">

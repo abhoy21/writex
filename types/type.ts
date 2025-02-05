@@ -1,14 +1,20 @@
 import { z } from "zod";
 
 export const signupSchema = z.object({
-  email: z.string().email(),
-  username: z.string(),
+  username: z
+    .string()
+    .min(3, "Username must be at least 3 characters long")
+    .regex(
+      /^[a-zA-Z0-9_]+$/,
+      "Username can only contain letters, numbers, and underscores"
+    ),
+  email: z.string().email("Invalid email"),
   password: z
     .string()
-    .min(8, "password must be at least 8 characters long")
+    .min(8, "Password must be at least 8 characters long")
     .regex(
       /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/,
-      "Password must contain at least one uppercase letter, one lowercase letter, one number, and one special character",
+      "Password must contain at least one uppercase letter, one lowercase letter, one number, and one special character"
     ),
 });
 
@@ -19,7 +25,7 @@ export const signinSchema = z.object({
     .min(8, "password must be at least 8 characters long")
     .regex(
       /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/,
-      "Password must contain at least one uppercase letter, one lowercase letter, one number, and one special character",
+      "Password must contain at least one uppercase letter, one lowercase letter, one number, and one special character"
     ),
 });
 
@@ -39,3 +45,16 @@ interface Form {
   name: string;
   required?: boolean;
 }
+
+export const contentSchema = z.object({
+  topic: z.string(),
+  outline: z.string(),
+  template: z.string(),
+  category: z.string(),
+  aiPrompt: z.string(),
+});
+
+export const paymentSchema = z.object({
+  subscriptionId: z.string(),
+  paymentId: z.string(),
+});

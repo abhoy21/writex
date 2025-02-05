@@ -1,5 +1,281 @@
 const templateData = [
   {
+    name: "Meeting Minutes Generator",
+    desc: "Transform rough meeting notes into professionally formatted minutes. This tool helps organize discussion points, action items, and decisions into a clear, structured document.",
+    category: "Business Writing",
+    icon: "https://cdn-icons-png.flaticon.com/128/6533/6533016.png",
+    slug: "meeting-minutes",
+    aiPrompt:
+      "Generate professional meeting minutes based on the rough notes and meeting details provided. Include sections for attendees, discussion points, decisions made, and action items. Format in rich text editor with clear headings and structure.",
+    form: [
+      {
+        label: "Meeting Title and Date",
+        field: "input",
+        name: "input",
+        required: true,
+      },
+      {
+        label: "Meeting Notes and Discussion Points",
+        field: "textarea",
+        name: "textarea",
+        required: true,
+      },
+    ],
+  },
+  {
+    name: "Technical Documentation Generator",
+    desc: "Create clear, comprehensive technical documentation for software, APIs, or products. Generate user-friendly guides with proper formatting and structure.",
+    category: "Technical Writing",
+    icon: "https://cdn-icons-png.flaticon.com/128/4882/4882992.png",
+    slug: "technical-docs",
+    aiPrompt:
+      "Generate detailed technical documentation based on the provided specifications. Include overview, setup instructions, usage examples, and API reference where applicable. Format in rich text editor with proper technical writing conventions.",
+    form: [
+      {
+        label: "Project/Product Name",
+        field: "input",
+        name: "input",
+        required: true,
+      },
+      {
+        label: "Technical Specifications and Details",
+        field: "textarea",
+        name: "textarea",
+        required: true,
+      },
+    ],
+  },
+  {
+    name: "Podcast Script Generator",
+    desc: "Create engaging podcast scripts with proper structure, transitions, and timing. Perfect for solo shows, interviews, or multi-host formats.",
+    category: "Content Creation",
+    icon: "https://cdn-icons-png.flaticon.com/128/2769/2769256.png",
+    slug: "podcast-script",
+    aiPrompt:
+      "Generate a conversational podcast script based on the topic and format provided. Include intro, segment transitions, discussion points, and outro. Format for easy reading with timing indicators.",
+    form: [
+      {
+        label: "Episode Topic and Duration",
+        field: "input",
+        name: "input",
+        required: true,
+      },
+      {
+        label: "Episode Format and Key Points",
+        field: "textarea",
+        name: "textarea",
+        required: true,
+      },
+    ],
+  },
+  {
+    name: "Case Study Writer",
+    desc: "Transform client success stories into compelling case studies. Generate professionally structured content that highlights challenges, solutions, and results.",
+    category: "Marketing",
+    icon: "https://cdn-icons-png.flaticon.com/128/9464/9464450.png",
+    slug: "case-study",
+    aiPrompt:
+      "Generate a detailed case study based on the client success story provided. Include sections for challenge, solution, implementation, and measurable results. Format in rich text editor with professional business writing style.",
+    form: [
+      {
+        label: "Client/Project Name",
+        field: "input",
+        name: "input",
+        required: true,
+      },
+      {
+        label: "Project Details and Results",
+        field: "textarea",
+        name: "textarea",
+        required: true,
+      },
+    ],
+  },
+  {
+    name: "Social Media Content Calendar",
+    desc: "Generate a month's worth of social media content ideas with post types, timing, and campaign integration. Perfect for maintaining consistent social presence.",
+    category: "Social Media",
+    icon: "https://cdn-icons-png.flaticon.com/128/4365/4365271.png",
+    slug: "social-calendar",
+    aiPrompt:
+      "Create a detailed social media content calendar with post ideas, content types, and optimal posting times based on the brand niche and goals provided. Include variety of content formats and campaign integration points.",
+    form: [
+      {
+        label: "Brand Niche and Target Audience",
+        field: "input",
+        name: "input",
+        required: true,
+      },
+      {
+        label: "Campaign Goals and Key Messages",
+        field: "textarea",
+        name: "textarea",
+        required: true,
+      },
+    ],
+  },
+  {
+    name: "Research Paper Outline",
+    desc: "Structure your academic research with a detailed outline generator. Create organized sections with proper academic formatting and citation placeholders.",
+    category: "Academic Writing",
+    icon: "https://cdn-icons-png.flaticon.com/128/3426/3426653.png",
+    slug: "research-outline",
+    aiPrompt:
+      "Generate a comprehensive research paper outline based on the topic and research goals provided. Include sections for introduction, literature review, methodology, results, and discussion. Format according to specified academic style.",
+    form: [
+      {
+        label: "Research Topic and Academic Field",
+        field: "input",
+        name: "input",
+        required: true,
+      },
+      {
+        label: "Research Objectives and Key Points",
+        field: "textarea",
+        name: "textarea",
+        required: true,
+      },
+    ],
+  },
+  {
+    name: "UX Writing Assistant",
+    desc: "Generate user-friendly microcopy for buttons, error messages, and UI elements. Create consistent, clear, and engaging user interface text.",
+    category: "UX Design",
+    icon: "https://cdn-icons-png.flaticon.com/128/1055/1055683.png",
+    slug: "ux-writing",
+    aiPrompt:
+      "Generate clear, concise UX copy for the specified interface elements. Consider user context, action clarity, and brand voice. Provide variations for testing.",
+    form: [
+      {
+        label: "Interface Element Type",
+        field: "input",
+        name: "input",
+        required: true,
+      },
+      {
+        label: "Context and User Action Details",
+        field: "textarea",
+        name: "textarea",
+        required: true,
+      },
+    ],
+  },
+  {
+    name: "Product Release Notes",
+    desc: "Create clear, engaging release notes that communicate updates, improvements, and bug fixes to users. Perfect for software and app updates.",
+    category: "Technical Writing",
+    icon: "https://cdn-icons-png.flaticon.com/128/2620/2620969.png",
+    slug: "release-notes",
+    aiPrompt:
+      "Generate user-friendly release notes based on the provided update details. Include sections for new features, improvements, bug fixes, and known issues. Format in rich text editor with clear categorization.",
+    form: [
+      {
+        label: "Version Number and Release Date",
+        field: "input",
+        name: "input",
+        required: true,
+      },
+      {
+        label: "Update Details and Changes",
+        field: "textarea",
+        name: "textarea",
+        required: true,
+      },
+    ],
+  },
+  {
+    name: "GitHub README Generator",
+    desc: "Create professional README.md files for your GitHub repositories with all essential sections. Includes badges, installation instructions, usage examples, and contribution guidelines.",
+    category: "Development",
+    icon: "https://cdn-icons-png.flaticon.com/128/11516/11516361.png",
+    slug: "github-readme",
+    aiPrompt:
+      "Generate a comprehensive GitHub README.md file with proper markdown formatting. Include project description, installation steps, usage examples, contribution guidelines, and license information. Add appropriate badges and structured sections.",
+    form: [
+      {
+        label: "Project Name and Type",
+        field: "input",
+        name: "input",
+        required: true,
+      },
+      {
+        label: "Project Features and Setup Requirements",
+        field: "textarea",
+        name: "textarea",
+        required: true,
+      },
+    ],
+  },
+  {
+    name: "API Documentation Generator",
+    desc: "Generate detailed API documentation with endpoints, parameters, request/response examples, and authentication details. Perfect for RESTful APIs and microservices.",
+    category: "Development",
+    icon: "https://cdn-icons-png.flaticon.com/128/8297/8297437.png",
+    slug: "api-docs",
+    aiPrompt:
+      "Generate comprehensive API documentation based on the provided endpoints and specifications. Include authentication methods, request/response formats, error codes, and usage examples. Format in clear technical writing style with proper structure.",
+    form: [
+      {
+        label: "API Name and Version",
+        field: "input",
+        name: "input",
+        required: true,
+      },
+      {
+        label: "API Endpoints and Specifications",
+        field: "textarea",
+        name: "textarea",
+        required: true,
+      },
+    ],
+  },
+  {
+    name: "Package Documentation Generator",
+    desc: "Create detailed documentation for software packages, libraries, or modules. Includes installation, configuration, methods, and examples with proper formatting.",
+    category: "Development",
+    icon: "https://cdn-icons-png.flaticon.com/128/2920/2920244.png",
+    slug: "package-docs",
+    aiPrompt:
+      "Generate comprehensive package documentation including installation instructions, configuration options, API reference, and usage examples. Format with proper technical writing conventions and clear structure.",
+    form: [
+      {
+        label: "Package Name and Language",
+        field: "input",
+        name: "input",
+        required: true,
+      },
+      {
+        label: "Package Features and Functions",
+        field: "textarea",
+        name: "textarea",
+        required: true,
+      },
+    ],
+  },
+  {
+    name: "Code Style Guide Generator",
+    desc: "Create customized code style guides for development teams. Generate comprehensive guidelines for code formatting, naming conventions, and best practices.",
+    category: "Development",
+    icon: "https://cdn-icons-png.flaticon.com/128/1005/1005141.png",
+    slug: "code-style-guide",
+    aiPrompt:
+      "Generate a detailed code style guide based on the programming language and team preferences. Include sections for formatting rules, naming conventions, documentation standards, and best practices. Provide examples for each guideline.",
+    form: [
+      {
+        label: "Programming Language",
+        field: "input",
+        name: "input",
+        required: true,
+      },
+      {
+        label: "Team Preferences and Special Requirements",
+        field: "textarea",
+        name: "textarea",
+        required: true,
+      },
+    ],
+  },
+  {
     name: "Blog Title",
     desc: "Generate compelling blog titles based on your niche and outline. This AI tool helps create engaging, SEO-friendly titles that capture readers' attention.",
     category: "Blog",
