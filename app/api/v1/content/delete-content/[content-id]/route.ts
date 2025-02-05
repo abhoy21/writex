@@ -3,10 +3,13 @@ import { client } from "@/lib/prisma";
 import { getServerSession } from "next-auth";
 import { NextRequest, NextResponse } from "next/server";
 
-export async function POST(
-  request: NextRequest,
-  context: { params: { "content-id": string } }
-) {
+interface RouteContext {
+  params: {
+    "content-id": string;
+  };
+}
+
+export async function POST(request: NextRequest, { params }: RouteContext) {
   try {
     const session = await getServerSession(authOptions);
     if (!session?.user?.id) {
@@ -15,7 +18,7 @@ export async function POST(
 
     await client.content.delete({
       where: {
-        id: context.params["content-id"],
+        id: params["content-id"],
         userId: session.user.id,
       },
     });
