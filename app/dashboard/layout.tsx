@@ -4,8 +4,10 @@ import { UsageContext } from "../(context)/usage";
 import DashboardHeader from "../_components/dashboard-header";
 import DashboardSidebar from "../_components/dashboard-sidebar";
 import { UpgradeUserContext } from "../(context)/upgrade-user";
-import { UpdateCreditUsageContext } from "../(context)/update-credit-usage";
-import { UpdateCreditUsageContextType } from "@/types/type";
+import {
+  UpdateCreditUsageContext,
+  UpdateCreditUsageContextType,
+} from "../(context)/update-credit-usage";
 
 export default function DashboardLayout({
   children,

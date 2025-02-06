@@ -59,21 +59,6 @@ export const paymentSchema = z.object({
   paymentId: z.string(),
 });
 
-export interface UsageContextType {
-  creditUsed: number;
-  setCreditused: (value: number) => void;
-}
-
-export interface UpgradeUserContextType {
-  upgradeUser: boolean;
-  setUpgradeUser: (value: boolean) => void;
-}
-
-export interface UpdateCreditUsageContextType {
-  updateCreditUsage: any;
-  setUpdateCreditUsage: React.Dispatch<React.SetStateAction<any>>;
-}
-
 export interface AccountProvider {
   userId: string;
   type: string;
