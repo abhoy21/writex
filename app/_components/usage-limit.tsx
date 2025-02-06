@@ -39,15 +39,14 @@ export default function UsageLimit(): React.JSX.Element {
         const response = await axios.get("/api/v1/content/get-contents");
         if (response.status === 200) {
           const data = response.data.contents;
-          const totalLength =
-            data.length > 0
-              ? data.reduce((acc: number, content: Content) => {
-                  const responseLength = content.response
-                    ? content.response.split(" ").length
-                    : 0;
-                  return acc + responseLength;
-                }, 0)
-              : 0;
+          const totalLength = data
+            ? data.reduce((acc: number, content: Content) => {
+                const responseLength = content.response
+                  ? content.response.split(" ").length
+                  : 0;
+                return acc + responseLength;
+              }, 0)
+            : 0;
 
           const boundedCredit = Math.min(totalLength, TOTAL_LIMIT);
           setCreditused(boundedCredit);

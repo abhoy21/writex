@@ -22,6 +22,7 @@ export default function Showcase(): React.JSX.Element {
                     width={1920}
                     height={1080}
                     alt="Showcase"
+                    priority
                   />
                 </div>
               </div>

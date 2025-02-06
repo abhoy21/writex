@@ -28,7 +28,6 @@ export default function Billing(): React.JSX.Element {
       if (response.status === 200) {
         console.log("response.data\n", response.data);
         onPaymentSuccess(response.data.response.id);
-        setSuccess(true);
         setLoading(false);
       }
     } catch (error) {
@@ -91,6 +90,7 @@ export default function Billing(): React.JSX.Element {
       data
     );
     if (response.status === 200) {
+      setSuccess(true);
       router.push("/dashboard");
     }
   };
