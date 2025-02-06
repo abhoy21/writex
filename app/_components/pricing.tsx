@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export default function Pricing(): React.JSX.Element {
   return (
-    <section className="py-20 ">
+    <section className="py-32">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16 animate__animated animate__fadeIn">
           <h2 className="text-3xl md:text-4xl font-bold text-supernova-200 mb-4">
@@ -14,7 +14,7 @@ export default function Pricing(): React.JSX.Element {
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* Free Plan */}
-          <div className="bg-neutral-800 rounded-2xl p-8 border border-neutral-700 hover:border-supernova-500 transition-all duration-300 animate__animated animate__fadeInUp">
+          <div className="bg-gradient-to-br from-neutral-950 to-neutral-900 rounded-2xl p-8 border border-neutral-700 hover:border-supernova-500 transition-all duration-300 animate__animated animate__fadeInUp">
             <div className="text-center mb-8">
               <h3 className="text-xl font-semibold text-white mb-2">Starter</h3>
               <div className="flex justify-center items-baseline mb-4">
@@ -78,7 +78,7 @@ export default function Pricing(): React.JSX.Element {
             </button>
           </div>
           {/* Pro Plan */}
-          <div className="bg-neutral-800 rounded-2xl p-8 border-2 border-supernova-500 relative transform scale-105 z-10 animate__animated animate__fadeInUp">
+          <div className="bg-gradient-to-br from-neutral-950 to-neutral-900 rounded-2xl p-8 border-2 border-supernova-500 relative transform scale-105 z-10 animate__animated animate__fadeInUp">
             <div className="absolute top-0 right-0 bg-supernova-500 text-white px-3 py-1 rounded-bl-lg rounded-tr-lg text-sm font-medium">
               Most Popular
             </div>
@@ -165,7 +165,7 @@ export default function Pricing(): React.JSX.Element {
             </Link>
           </div>
           {/* Enterprise Plan */}
-          <div className="bg-neutral-800 rounded-2xl p-8 border border-neutral-700 hover:border-supernova-500 transition-all duration-300 animate__animated animate__fadeInUp">
+          <div className="bg-gradient-to-br from-neutral-950 to-neutral-900 rounded-2xl p-8 border border-neutral-700 hover:border-supernova-500 transition-all duration-300 animate__animated animate__fadeInUp">
             <div className="text-center mb-8">
               <h3 className="text-xl font-semibold text-white mb-2">
                 Enterprise
