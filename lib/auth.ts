@@ -8,6 +8,12 @@ import { client } from "./prisma";
 import { PrismaAdapter } from "@next-auth/prisma-adapter";
 import { AccountProvider } from "@/types/type";
 
+interface UserCredentials {
+  id: string;
+  email: string;
+  username: string;
+}
+
 export const authOptions: NextAuthOptions = {
   adapter: PrismaAdapter(client),
   debug: process.env.NODE_ENV !== "production",
@@ -22,7 +28,7 @@ export const authOptions: NextAuthOptions = {
           placeholder: "Password",
         },
       },
-      async authorize(credentials): Promise<any> {
+      async authorize(credentials): Promise<UserCredentials | null> {
         try {
           if (!credentials?.email || !credentials.password) {
             throw new Error("Invalid credentials");

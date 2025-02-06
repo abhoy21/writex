@@ -6,6 +6,7 @@ import { useContext, useEffect, useState } from "react";
 import { Loader2 } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { UpgradeUserContext } from "@/app/(context)/upgrade-user";
+import { RazorpayResponse } from "@/types/type";
 
 export default function Billing(): React.JSX.Element {
   const router = useRouter();
@@ -58,7 +59,7 @@ export default function Billing(): React.JSX.Element {
       quantity: 1,
       description:
         "WriteX Professional-Subscription - this subscriptions will be charged on a 3-month interval basis",
-      handler: async (response: unknown) => {
+      handler: async (response: RazorpayResponse) => {
         await saveToDB({
           subId: id,
           paymentId: response.razorpay_payment_id,

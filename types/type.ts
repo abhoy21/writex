@@ -74,3 +74,9 @@ export interface AccountProvider {
   createdAt: Date;
   updatedAt: Date;
 }
+
+export interface RazorpayResponse {
+  razorpay_payment_id: string;
+  razorpay_order_id?: string;
+  razorpay_signature?: string;
+}
