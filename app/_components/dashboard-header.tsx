@@ -1,14 +1,6 @@
 import React from "react";
-import { Button } from "@/components/ui/button";
-import { Menu } from "lucide-react";
 
-interface DashboardHeaderProps {
-  toggleSidebar: () => void;
-}
-
-export default function DashboardHeader({
-  toggleSidebar,
-}: DashboardHeaderProps): React.JSX.Element {
+export default function DashboardHeader(): React.JSX.Element {
   return (
     <div className="p-4 border-b border-supernova-900/45 shadow-sm shadow-supernova-900/45 flex items-center justify-between">
       <div className="flex items-center gap-4">

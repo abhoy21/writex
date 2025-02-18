@@ -64,7 +64,7 @@ export default function DashboardLayout({
             )}
 
             <div className={`transition-all duration-300 md:ml-64`}>
-              <DashboardHeader toggleSidebar={toggleSidebar} />
+              <DashboardHeader />
               <main className="p-4">{children}</main>
             </div>
           </div>

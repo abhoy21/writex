@@ -669,6 +669,283 @@ const templateData = [
       },
     ],
   },
+
+  {
+    name: "YouTube Short Description Generator",
+    desc: "Create SEO-optimized, AI-undetectable video descriptions under 1000 characters. Includes relevant hashtags and tags for maximum visibility.",
+    category: "Youtube Tools",
+    icon: "https://cdn-icons-png.flaticon.com/128/3938/3938026.png",
+    slug: "youtube-short-desc",
+    aiPrompt:
+      "Generate a 1000-character YouTube video description with SEO optimization. Include 10 relevant hashtags and 35 related tags. Ensure the content is engaging and natural.",
+    form: [
+      {
+        label: "Video Topic/Keywords",
+        field: "input",
+        name: "input",
+        required: true,
+      },
+      {
+        label: "Video Content Details",
+        field: "textarea",
+        name: "textarea",
+        required: true,
+      },
+    ],
+  },
+  {
+    name: "Email Subject Line Generator",
+    desc: "Create attention-grabbing email subject lines using proven copywriting techniques to improve open rates and engagement.",
+    category: "Email Marketing",
+    icon: "https://cdn-icons-png.flaticon.com/128/4233/4233830.png",
+    slug: "email-subject-lines",
+    aiPrompt:
+      "Generate compelling email subject lines using copywriting principles that drive opens and engagement.",
+    form: [
+      {
+        label: "Email Topic/Purpose",
+        field: "input",
+        name: "input",
+        required: true,
+      },
+      {
+        label: "Key Message Points",
+        field: "textarea",
+        name: "textarea",
+        required: true,
+      },
+    ],
+  },
+  {
+    name: "Cold Email Generator",
+    desc: "Create effective cold emails with compelling subject lines, structured content, and strong calls to action.",
+    category: "Email Marketing",
+    icon: "https://cdn-icons-png.flaticon.com/128/2258/2258843.png",
+    slug: "cold-email",
+    aiPrompt:
+      "Generate a professional cold email with an attention-grabbing subject line, well-structured body content, and compelling call to action.",
+    form: [
+      {
+        label: "Recipient Industry/Role",
+        field: "input",
+        name: "input",
+        required: true,
+      },
+      {
+        label: "Purpose and Value Proposition",
+        field: "textarea",
+        name: "textarea",
+        required: true,
+      },
+    ],
+  },
+  {
+    name: "Follow-up Email Generator",
+    desc: "Create strategic follow-up emails that maintain engagement and drive responses with perfect timing and tone.",
+    category: "Email Marketing",
+    icon: "https://cdn-icons-png.flaticon.com/128/3059/3059997.png",
+    slug: "follow-up-email",
+    aiPrompt:
+      "Generate a strategic follow-up email that references the previous interaction and provides a clear next step.",
+    form: [
+      {
+        label: "Previous Email Context",
+        field: "input",
+        name: "input",
+        required: true,
+      },
+      {
+        label: "Follow-up Purpose",
+        field: "textarea",
+        name: "textarea",
+        required: true,
+      },
+    ],
+  },
+  {
+    name: "Newsletter Generator",
+    desc: "Create engaging, scannable newsletters that keep your audience informed and interested in your content.",
+    category: "Email Marketing",
+    icon: "https://cdn-icons-png.flaticon.com/128/2665/2665632.png",
+    slug: "newsletter",
+    aiPrompt:
+      "Generate an engaging newsletter with clear sections, compelling headlines, and easy-to-read content.",
+    form: [
+      {
+        label: "Newsletter Topic/Theme",
+        field: "input",
+        name: "input",
+        required: true,
+      },
+      {
+        label: "Key Updates/Content",
+        field: "textarea",
+        name: "textarea",
+        required: true,
+      },
+    ],
+  },
+  {
+    name: "Domain Name Generator",
+    desc: "Generate creative and available domain name ideas for your website or business.",
+    category: "Business Tools",
+    icon: "https://cdn-icons-png.flaticon.com/128/3659/3659998.png",
+    slug: "domain-names",
+    aiPrompt:
+      "Generate unique and memorable domain name suggestions based on the business concept and keywords.",
+    form: [
+      {
+        label: "Business Name/Keywords",
+        field: "input",
+        name: "input",
+        required: true,
+      },
+      {
+        label: "Business Description",
+        field: "textarea",
+        name: "textarea",
+        required: true,
+      },
+    ],
+  },
+  {
+    name: "About Us Page Generator",
+    desc: "Create a compelling About Us page that tells your brand story and connects with your audience.",
+    category: "Web Content",
+    icon: "https://cdn-icons-png.flaticon.com/128/3273/3273632.png",
+    slug: "about-us",
+    aiPrompt:
+      "Generate a comprehensive About Us page covering company history, mission, team, achievements, and values.",
+    form: [
+      {
+        label: "Company Name",
+        field: "input",
+        name: "input",
+        required: true,
+      },
+      {
+        label: "Company Details and History",
+        field: "textarea",
+        name: "textarea",
+        required: true,
+      },
+    ],
+  },
+  {
+    name: "Ad Copy Generator",
+    desc: "Create compelling ad copy that drives clicks and conversions across different platforms.",
+    category: "Marketing",
+    icon: "https://cdn-icons-png.flaticon.com/128/1968/1968666.png",
+    slug: "ad-copy",
+    aiPrompt:
+      "Generate attention-grabbing ad copy with clear value propositions and strong calls to action.",
+    form: [
+      {
+        label: "Product/Service Name",
+        field: "input",
+        name: "input",
+        required: true,
+      },
+      {
+        label: "Key Benefits and Target Audience",
+        field: "textarea",
+        name: "textarea",
+        required: true,
+      },
+    ],
+  },
+  {
+    name: "Benefit-Action-Benefit Framework",
+    desc: "Structure your marketing message using the powerful Benefit-Action-Benefit framework to highlight value and drive action.",
+    category: "Marketing",
+    icon: "https://cdn-icons-png.flaticon.com/128/4727/4727488.png",
+    slug: "bab-framework",
+    aiPrompt:
+      "Generate marketing copy using the B-A-B framework to emphasize benefits and drive action.",
+    form: [
+      {
+        label: "Product/Service Name",
+        field: "input",
+        name: "input",
+        required: true,
+      },
+      {
+        label: "Key Features and Benefits",
+        field: "textarea",
+        name: "textarea",
+        required: true,
+      },
+    ],
+  },
+  {
+    name: "Attention-Interest-Desire-Action Framework",
+    desc: "Create compelling marketing content using the AIDA framework to guide customers through the purchase journey.",
+    category: "Marketing",
+    icon: "https://cdn-icons-png.flaticon.com/128/6153/6153028.png",
+    slug: "aida-framework",
+    aiPrompt:
+      "Generate marketing content using the AIDA framework to capture attention and drive action.",
+    form: [
+      {
+        label: "Product/Service Name",
+        field: "input",
+        name: "input",
+        required: true,
+      },
+      {
+        label: "Product Details and Target Audience",
+        field: "textarea",
+        name: "textarea",
+        required: true,
+      },
+    ],
+  },
+  {
+    name: "Problem-Agitate-Solution Framework",
+    desc: "Develop persuasive content that identifies customer pain points, amplifies the problem, and presents your solution.",
+    category: "Marketing",
+    icon: "https://cdn-icons-png.flaticon.com/128/4727/4727488.png",
+    slug: "pas-framework",
+    aiPrompt:
+      "Generate marketing content using the P-A-S framework to highlight problems and present solutions.",
+    form: [
+      {
+        label: "Product/Service Name",
+        field: "input",
+        name: "input",
+        required: true,
+      },
+      {
+        label: "Customer Pain Points and Solution",
+        field: "textarea",
+        name: "textarea",
+        required: true,
+      },
+    ],
+  },
+  {
+    name: "Problem-Amplify-Story-Transform-Offer-Response Framework",
+    desc: "Create comprehensive marketing narratives that connect with customers through storytelling and clear value propositions.",
+    category: "Marketing",
+    icon: "https://cdn-icons-png.flaticon.com/128/3662/3662317.png",
+    slug: "pastor-framework",
+    aiPrompt:
+      "Generate marketing content using the PASTOR framework to build compelling narratives and drive response.",
+    form: [
+      {
+        label: "Product/Service Name",
+        field: "input",
+        name: "input",
+        required: true,
+      },
+      {
+        label: "Problem Description and Transformation Story",
+        field: "textarea",
+        name: "textarea",
+        required: true,
+      },
+    ],
+  },
 ];
 
 export default templateData;
