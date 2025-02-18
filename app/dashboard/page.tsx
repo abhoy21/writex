@@ -6,9 +6,10 @@ import DashboardTemplate from "../_components/dashboard-template";
 
 export default function DashboardPage(): React.JSX.Element {
   const [searchTerm, setSearchTerm] = useState<string>("");
+
   return (
     <div>
-      <div className="px-8 py-4">
+      <div className="px-4 md:px-8 py-4">
         <DashboardSearchSection setSearchTerm={setSearchTerm} />
       </div>
       <DashboardTemplate searchTerm={searchTerm} />

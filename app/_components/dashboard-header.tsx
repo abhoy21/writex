@@ -1,10 +1,22 @@
-export default function DashboardHeader(): React.JSX.Element {
+import React from "react";
+import { Button } from "@/components/ui/button";
+import { Menu } from "lucide-react";
+
+interface DashboardHeaderProps {
+  toggleSidebar: () => void;
+}
+
+export default function DashboardHeader({
+  toggleSidebar,
+}: DashboardHeaderProps): React.JSX.Element {
   return (
-    <div className="p-2 border-b border-supernova-900/45 shadow-sm shadow-supernova-900/45 flex items-center justify-between">
-      <div>
-        <h1 className="text-2xl font-semibold text-supernova-200">Dashboard</h1>
+    <div className="p-4 border-b border-supernova-900/45 shadow-sm shadow-supernova-900/45 flex items-center justify-between">
+      <div className="flex items-center gap-4">
+        <h1 className="hidden md:block text-2xl font-semibold text-supernova-200">
+          Dashboard
+        </h1>
       </div>
-      <div className="p-2">
+      <div>
         <h2 className="bg-gradient-to-br from-supernova-200 to-supernova-500 p-2 text-supernova-800 rounded-lg text-sm font-semibold">
           Join the community today! 🚀
         </h2>
