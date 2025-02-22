@@ -720,7 +720,7 @@ const templateData = [
     name: "Cold Email Generator",
     desc: "Create effective cold emails with compelling subject lines, structured content, and strong calls to action.",
     category: "Email Marketing",
-    icon: "https://cdn-icons-png.flaticon.com/128/2258/2258843.png",
+    icon: "https://cdn-icons-png.flaticon.com/128/4144/4144781.png",
     slug: "cold-email",
     aiPrompt:
       "Generate a professional cold email with an attention-grabbing subject line, well-structured body content, and compelling call to action.",
@@ -766,7 +766,7 @@ const templateData = [
     name: "Newsletter Generator",
     desc: "Create engaging, scannable newsletters that keep your audience informed and interested in your content.",
     category: "Email Marketing",
-    icon: "https://cdn-icons-png.flaticon.com/128/2665/2665632.png",
+    icon: "https://cdn-icons-png.flaticon.com/128/2645/2645883.png",
     slug: "newsletter",
     aiPrompt:
       "Generate an engaging newsletter with clear sections, compelling headlines, and easy-to-read content.",
@@ -789,7 +789,7 @@ const templateData = [
     name: "Domain Name Generator",
     desc: "Generate creative and available domain name ideas for your website or business.",
     category: "Business Tools",
-    icon: "https://cdn-icons-png.flaticon.com/128/3659/3659998.png",
+    icon: "https://cdn-icons-png.flaticon.com/128/9503/9503185.png",
     slug: "domain-names",
     aiPrompt:
       "Generate unique and memorable domain name suggestions based on the business concept and keywords.",
@@ -808,6 +808,7 @@ const templateData = [
       },
     ],
   },
+
   {
     name: "About Us Page Generator",
     desc: "Create a compelling About Us page that tells your brand story and connects with your audience.",
@@ -927,7 +928,7 @@ const templateData = [
     name: "Problem-Amplify-Story-Transform-Offer-Response Framework",
     desc: "Create comprehensive marketing narratives that connect with customers through storytelling and clear value propositions.",
     category: "Marketing",
-    icon: "https://cdn-icons-png.flaticon.com/128/3662/3662317.png",
+    icon: "https://cdn-icons-png.flaticon.com/128/4233/4233830.png",
     slug: "pastor-framework",
     aiPrompt:
       "Generate marketing content using the PASTOR framework to build compelling narratives and drive response.",
