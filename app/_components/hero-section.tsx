@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { ArrowUpRight } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 
 export default function Hero(): React.JSX.Element {
   return (
@@ -10,7 +11,7 @@ export default function Hero(): React.JSX.Element {
           <span className="px-4 py-2 bg-supernova-500/10 text-supernova-400 rounded-full text-sm font-medium inline-block">
             Write Better, Faster
           </span>
-          <h1 className="text-3xl md:text-5xl lg:text-7xl font-montserrat bg-gradient-to-r from-supernova-100 to-supernova-700 text-transparent bg-clip-text leading-tight ">
+          <h1 className="text-3xl md:text-5xl lg:text-7xl font-montserrat bg-gradient-to-r from-supernova-100 to-supernova-500 text-transparent bg-clip-text leading-tight ">
             Write Better with WriteX
           </h1>
 
@@ -22,7 +23,7 @@ export default function Hero(): React.JSX.Element {
             website or blog.
           </p>
 
-          <div className="flexflex-col sm:flex-row gap-6 space-x-8 mt-6">
+          <div className="flex flex-col sm:flex-row gap-6 mt-6">
             <Link href="/auth/signup">
               <Button className="text-supernova-950 hover:text-supernova-500">
                 Get Started Now
@@ -30,9 +31,60 @@ export default function Hero(): React.JSX.Element {
               </Button>
             </Link>
           </div>
+
+          {/* Avatar section with testimonial message */}
+          <div className="mt-6 flex flex-col items-center">
+            <div className="flex -space-x-4 overflow-hidden mb-3 p-2">
+              <div className="inline-block h-12 w-12 rounded-full ring-2 ring-white relative overflow-hidden">
+                <Image
+                  src="/avatar1.jpeg"
+                  alt="User avatar"
+                  width={48}
+                  height={48}
+                  className="object-cover"
+                />
+              </div>
+              <div className="inline-block h-12 w-12 rounded-full ring-2 ring-white relative overflow-hidden">
+                <Image
+                  src="/avatar2.jpeg"
+                  alt="User avatar"
+                  width={48}
+                  height={48}
+                  className="object-cover"
+                />
+              </div>
+              <div className="inline-block h-12 w-12 rounded-full ring-2 ring-white relative overflow-hidden">
+                <Image
+                  src="/avatar3.jpeg"
+                  alt="User avatar"
+                  width={48}
+                  height={48}
+                  className="object-cover"
+                />
+              </div>
+              <div className="inline-block h-12 w-12 rounded-full ring-2 ring-white relative overflow-hidden">
+                <Image
+                  src="/avatar4.jpeg"
+                  alt="User avatar"
+                  width={48}
+                  height={48}
+                  className="object-cover"
+                />
+              </div>
+              <div className="flex items-center justify-center h-12 w-12 rounded-full bg-supernova-500 ring-2 ring-white text-white text-xs font-medium">
+                500+
+              </div>
+            </div>
+            <div className="px-6 py-3 bg-neutral-800/50 rounded-xl max-w-md">
+              <p className="text-center text-gray-300 text-sm italic">
+                "Join over 500 content creators who have boosted their SEO
+                rankings by 83% with our AI-powered content generation"
+              </p>
+            </div>
+          </div>
         </div>
 
-        <div className="flex flex-col sm:flex-row justify-center items-center gap-6 text-gray-400 pt-4">
+        <div className="flex flex-col sm:flex-row justify-center items-center gap-6 text-gray-400 pb-10">
           <div className="flex items-center gap-3">
             <div className="w-5 h-5 bg-gradient-to-r from-supernova-400 to-supernova-700 rounded-full flex items-center justify-center">
               <svg

@@ -4,7 +4,7 @@ export default function Showcase(): React.JSX.Element {
   return (
     <section className="min-h-screen overflow-hidden -mt-72 -mb-32">
       <div className="flex justify-center items-center">
-        <div className="w-full lg:w-1/2">
+        <div className="w-full lg:w-[100rem] mx-auto px-4 sm:px-6 lg:px-8">
           <div className="relative">
             <div className="absolute inset-0 bg-gradient-to-r from-supernova-300/30 to-supernova-500/45 blur-[120px] rounded-full"></div>
 

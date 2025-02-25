@@ -12,7 +12,9 @@ export default function LandingPage(): React.JSX.Element {
       <Navbar />
       <main>
         <Hero />
+
         <Showcase />
+
         <Testimonials />
         <Pricing />
         <CTA />
