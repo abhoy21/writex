@@ -76,8 +76,8 @@ export default function Hero(): React.JSX.Element {
             </div>
             <div className="px-6 py-3 bg-neutral-800/50 rounded-xl max-w-md">
               <p className="text-center text-supernova-400 text-sm italic">
-                "Join over 500 content creators who have boosted their SEO
-                rankings by 83% with our AI-powered content generation"
+                &quot;Join over 500 content creators who have boosted their SEO
+                rankings by 83% with our AI-powered content generation&quot;
               </p>
             </div>
           </div>

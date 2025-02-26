@@ -101,7 +101,7 @@ export default function ProductDescription(): React.JSX.Element {
                 <p className="text-gray-300">
                   <span className="font-semibold text-white">SEO Analysis</span>{" "}
                   — Get real-time feedback and suggestions to improve your
-                  content's search engine ranking.
+                  content&apos;s search engine ranking.
                 </p>
               </div>
 
