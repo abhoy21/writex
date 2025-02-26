@@ -3,6 +3,7 @@ import Footer from "./footer";
 import Hero from "./hero-section";
 import Navbar from "./navbar";
 import Pricing from "./pricing";
+import ProductDescription from "./product-description";
 import Showcase from "./showcase-section";
 import Testimonials from "./testimonials";
 
@@ -14,7 +15,7 @@ export default function LandingPage(): React.JSX.Element {
         <Hero />
 
         <Showcase />
-
+        <ProductDescription />
         <Testimonials />
         <Pricing />
         <CTA />

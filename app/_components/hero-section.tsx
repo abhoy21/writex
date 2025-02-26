@@ -16,11 +16,11 @@ export default function Hero(): React.JSX.Element {
           </h1>
 
           <p className="text-sm text-center text-gray-400 leading-relaxed mt-6">
-            Write SEO optimized content with WriteX. WriteX is a free,
-            open-source, and easy-to-use tool that helps you write better,
-            faster, and more efficiently with the help of AI. With WriteX, you
-            can easily create and edit content, and publish your work on your
-            website or blog.
+            WriteX: AI-powered content creation for everyone. Create
+            SEO-optimized blogs, articles, and web content in minutes with our
+            free, open-source writing assistant. Streamline your workflow from
+            draft to publication—write better, publish faster, and reach more
+            readers without the complexity.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-6 mt-6">
@@ -32,10 +32,9 @@ export default function Hero(): React.JSX.Element {
             </Link>
           </div>
 
-          {/* Avatar section with testimonial message */}
           <div className="mt-6 flex flex-col items-center">
-            <div className="flex -space-x-4 overflow-hidden mb-3 p-2">
-              <div className="inline-block h-12 w-12 rounded-full ring-2 ring-white relative overflow-hidden">
+            <div className="flex -space-x-4 overflow-hidden mb-2 p-2">
+              <div className="inline-block h-12 w-12 rounded-full ring-2 ring-supernova-500 relative overflow-hidden">
                 <Image
                   src="/avatar1.jpeg"
                   alt="User avatar"
@@ -44,7 +43,7 @@ export default function Hero(): React.JSX.Element {
                   className="object-cover"
                 />
               </div>
-              <div className="inline-block h-12 w-12 rounded-full ring-2 ring-white relative overflow-hidden">
+              <div className="inline-block h-12 w-12 rounded-full ring-2 ring-supernova-500 relative overflow-hidden">
                 <Image
                   src="/avatar2.jpeg"
                   alt="User avatar"
@@ -53,7 +52,7 @@ export default function Hero(): React.JSX.Element {
                   className="object-cover"
                 />
               </div>
-              <div className="inline-block h-12 w-12 rounded-full ring-2 ring-white relative overflow-hidden">
+              <div className="inline-block h-12 w-12 rounded-full ring-2 ring-supernova-500 relative overflow-hidden">
                 <Image
                   src="/avatar3.jpeg"
                   alt="User avatar"
@@ -62,7 +61,7 @@ export default function Hero(): React.JSX.Element {
                   className="object-cover"
                 />
               </div>
-              <div className="inline-block h-12 w-12 rounded-full ring-2 ring-white relative overflow-hidden">
+              <div className="inline-block h-12 w-12 rounded-full ring-2 ring-supernova-500 relative overflow-hidden">
                 <Image
                   src="/avatar4.jpeg"
                   alt="User avatar"
@@ -71,12 +70,12 @@ export default function Hero(): React.JSX.Element {
                   className="object-cover"
                 />
               </div>
-              <div className="flex items-center justify-center h-12 w-12 rounded-full bg-supernova-500 ring-2 ring-white text-white text-xs font-medium">
-                500+
+              <div className="flex items-center justify-center h-12 w-12 rounded-full bg-neutral-900 ring-2 ring-supernova-500 text-supernova-500 text-xs font-medium">
+                50+
               </div>
             </div>
             <div className="px-6 py-3 bg-neutral-800/50 rounded-xl max-w-md">
-              <p className="text-center text-gray-300 text-sm italic">
+              <p className="text-center text-supernova-400 text-sm italic">
                 "Join over 500 content creators who have boosted their SEO
                 rankings by 83% with our AI-powered content generation"
               </p>

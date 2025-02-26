@@ -5,7 +5,7 @@ export default function Pricing(): React.JSX.Element {
     <section className="py-32">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16 animate__animated animate__fadeIn">
-          <h2 className="text-3xl md:text-4xl font-bold text-supernova-200 mb-4">
+          <h2 className="text-3xl md:text-5xl lg:text-7xl font-bold text-supernova-400 mb-4">
             Choose Your Content Creation Plan
           </h2>
           <p className="text-gray-400 text-lg max-w-2xl mx-auto">
