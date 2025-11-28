@@ -9,6 +9,7 @@ import { AccountProvider } from "@/types/types";
 
 export const config = {
   debug: process.env.NODE_ENV !== "production",
+  trustHost: true,
   providers: [
     CredentialsProvider({
       name: "Credentials",
