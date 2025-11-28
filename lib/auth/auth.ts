@@ -4,12 +4,10 @@ import type { NextAuthConfig } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import GoogleProvider from "next-auth/providers/google";
 import { generatePassword } from "./generate-password";
-import { PrismaAdapter } from "@next-auth/prisma-adapter";
 import { prisma } from "../prisma";
 import { AccountProvider } from "@/types/types";
 
 export const config = {
-  adapter: PrismaAdapter(prisma),
   debug: process.env.NODE_ENV !== "production",
   providers: [
     CredentialsProvider({
