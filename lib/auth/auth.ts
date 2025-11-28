@@ -74,11 +74,22 @@ export const config = {
       },
     }),
   ],
+
+  pages: {
+    signIn: "/auth/signin",
+  },
  
   callbacks: {
-   async jwt({ token, user, account }) {
-      // First time OAuth login
-      if (account?.provider === "google") {
+    async jwt({ token, user, account }) {
+      // On initial sign-in (user object is present)
+      if (user) {
+        token.userId = user.id!;
+        token.username = user.username!;
+        token.email = user.email!;
+      }
+      
+      // For OAuth providers, fetch user data from DB if not already in token
+      if (account?.provider === "google" && !token.userId) {
         const dbUser = await prisma.user.findUnique({
           where: { email: token.email! },
           select: { id: true, username: true, email: true }
@@ -91,21 +102,14 @@ export const config = {
         }
       }
 
-      // Credentials login (your current logic works)
-      if (user && account?.provider === "credentials") {
-        token.userId = user.id ?? "";
-        token.username = user.username ?? "";
-        token.email = user.email ?? "";
-      }
-
       return token;
     },
-
 
     async session({ session, token }) {
       if (token && session.user) {
         session.user.id = token.userId as string;
         session.user.username = token.username as string;
+        session.user.email = token.email as string;
       }
       return session;
     },
