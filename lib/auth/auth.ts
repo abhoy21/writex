@@ -76,13 +76,31 @@ export const config = {
   ],
  
   callbacks: {
-    async jwt({ token, user }) {
-      if (user) {
-        token.userId = user.id!;
-        token.username = user.username!;
+   async jwt({ token, user, account }) {
+      // First time OAuth login
+      if (account?.provider === "google") {
+        const dbUser = await prisma.user.findUnique({
+          where: { email: token.email! },
+          select: { id: true, username: true, email: true }
+        });
+
+        if (dbUser) {
+          token.userId = dbUser.id;
+          token.username = dbUser.username;
+          token.email = dbUser.email;
+        }
       }
+
+      // Credentials login (your current logic works)
+      if (user && account?.provider === "credentials") {
+        token.userId = user.id ?? "";
+        token.username = user.username ?? "";
+        token.email = user.email ?? "";
+      }
+
       return token;
     },
+
 
     async session({ session, token }) {
       if (token && session.user) {
