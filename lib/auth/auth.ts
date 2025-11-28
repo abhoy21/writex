@@ -74,10 +74,6 @@ export const config = {
       },
     }),
   ],
-
-  pages: {
-    signIn: "/auth/signin",
-  },
  
   callbacks: {
     async jwt({ token, user, account }) {
