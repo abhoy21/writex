@@ -1,3 +1,4 @@
+import { Analytics } from "@vercel/analytics/next";
 import type React from "react";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
@@ -26,6 +27,7 @@ export default function RootLayout({
       <body className="font-sans bg-background text-foreground antialiased">
         {children}
         <Toaster />
+        <Analytics />
       </body>
     </html>
   );
