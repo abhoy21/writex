@@ -65,39 +65,24 @@ export const config = {
     }),
 
     GoogleProvider({
-      clientId: process.env.GOOGLE_CLIENT_ID!,
-      clientSecret: process.env.GOOGLE_CLIENT_SECRET!,
+      clientId: process.env.GOOGLE_CLIENT_ID ?? "",
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET ?? "",
       authorization: {
         params: {
           prompt: "select_account",
         },
       },
     }),
+
+
   ],
- 
+
   callbacks: {
-    async jwt({ token, user, account }) {
-      // On initial sign-in (user object is present)
+    async jwt({ token, user }) {
       if (user) {
         token.userId = user.id!;
         token.username = user.username!;
-        token.email = user.email!;
       }
-      
-      // For OAuth providers, fetch user data from DB if not already in token
-      if (account?.provider === "google" && !token.userId) {
-        const dbUser = await prisma.user.findUnique({
-          where: { email: token.email! },
-          select: { id: true, username: true, email: true }
-        });
-
-        if (dbUser) {
-          token.userId = dbUser.id;
-          token.username = dbUser.username;
-          token.email = dbUser.email;
-        }
-      }
-
       return token;
     },
 
@@ -105,7 +90,34 @@ export const config = {
       if (token && session.user) {
         session.user.id = token.userId as string;
         session.user.username = token.username as string;
-        session.user.email = token.email as string;
+      }
+      return session;
+    },
+
+    async signIn({ user, account }) {
+      try {
+        if (account?.provider === "google") {
+          if (!user.email) return false;
+          token.username = dbUser.username;
+          token.email = dbUser.email;
+        }
+      }
+
+      // Credentials login (your current logic works)
+      if (user && account?.provider === "credentials") {
+        token.userId = user.id ?? "";
+        token.username = user.username ?? "";
+        token.email = user.email ?? "";
+      }
+
+      return token;
+    },
+
+
+    async session({ session, token }) {
+      if (token && session.user) {
+        session.user.id = token.userId as string;
+        session.user.username = token.username as string;
       }
       return session;
     },
@@ -198,8 +210,7 @@ export const config = {
     strategy: "jwt",
     maxAge: 24 * 60 * 60,
   },
-
-  secret: process.env.NEXTAUTH_SECRET!,
+  secret: process.env.NEXTAUTH_SECRET ?? "",
 } satisfies NextAuthConfig;
 
 export const { handlers, auth, signIn, signOut } = NextAuth(config);
