@@ -9,7 +9,7 @@ export async function middleware(request: NextRequest): Promise<NextResponse> {
   });
 
   const { pathname } = request.nextUrl;
-
+  console.log("Middleware token", token); 
   // Debug logging for production
   if (process.env.NODE_ENV === "production") {
     console.log("Middleware - Path:", pathname, "Has Token:", !!token);
