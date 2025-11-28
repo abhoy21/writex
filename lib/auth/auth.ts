@@ -2,7 +2,6 @@ import NextAuth from "next-auth";
 import { compare, hash } from "bcrypt";
 import type { NextAuthConfig } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
-import GitHubProvider from "next-auth/providers/github";
 import GoogleProvider from "next-auth/providers/google";
 import { generatePassword } from "./generate-password";
 import { PrismaAdapter } from "@next-auth/prisma-adapter";
@@ -66,24 +65,16 @@ export const config = {
     }),
 
     GoogleProvider({
-      clientId: process.env.GOOGLE_CLIENT_ID ?? "",
-      clientSecret: process.env.GOOGLE_CLIENT_SECRET ?? "",
+      clientId: process.env.GOOGLE_CLIENT_ID!,
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET!,
       authorization: {
         params: {
           prompt: "select_account",
         },
       },
     }),
-
-    GitHubProvider({
-      clientId: process.env.GITHUB_ID ?? "",
-      clientSecret: process.env.GITHUB_SECRET ?? "",
-    }),
   ],
-  pages: {
-    signIn: "/auth/signin",
-  },
-
+ 
   callbacks: {
     async jwt({ token, user }) {
       if (user) {
@@ -103,7 +94,7 @@ export const config = {
 
     async signIn({ user, account }) {
       try {
-        if (account?.provider === "github" || account?.provider === "google") {
+        if (account?.provider === "google") {
           if (!user.email) return false;
 
           const existingUser = await prisma.user.findUnique({
@@ -189,7 +180,7 @@ export const config = {
     strategy: "jwt",
     maxAge: 24 * 60 * 60,
   },
-  secret: process.env.NEXTAUTH_SECRET ?? "",
+  secret: process.env.NEXTAUTH_SECRET!,
 } satisfies NextAuthConfig;
 
 export const { handlers, auth, signIn, signOut } = NextAuth(config);

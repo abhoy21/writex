@@ -42,7 +42,6 @@ export default function Auth() {
 
         if (response?.error) {
           console.log("response.error", response.error);
-          // You might want to set a form error here
           return;
         }
         router.push("/dashboard");
@@ -52,7 +51,7 @@ export default function Auth() {
           data,
         });
         if (response.status === 201) {
-          setIsLogin(true); // Switch to login after signup
+          setIsLogin(true); 
           reset();
         }
       }
@@ -177,7 +176,7 @@ export default function Auth() {
             </p>
           )}
         </div>
-        <div className="px-2 sm:px-3 md:px-3.5 py-1 sm:py-1.5 bg-white shadow-[0px_1px_2px_rgba(55,50,47,0.12)] overflow-hidden rounded-full flex justify-center items-center">
+        <div className="px-2 sm:px-3 md:px-3.5 py-1 sm:py-1.5 border border-gray-200 bg-white shadow-[0px_1px_2px_rgba(55,50,47,0.12)] overflow-hidden rounded-full flex justify-center items-center">
           <button
             disabled={!isValid || isSubmitting}
             className={`flex items-center justify-center text-[#37322F] text-xs md:text-[13px] font-medium leading-5 font-sans w-full
