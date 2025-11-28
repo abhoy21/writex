@@ -73,8 +73,6 @@ export const config = {
         },
       },
     }),
-
-
   ],
 
   callbacks: {
@@ -85,34 +83,6 @@ export const config = {
       }
       return token;
     },
-
-    async session({ session, token }) {
-      if (token && session.user) {
-        session.user.id = token.userId as string;
-        session.user.username = token.username as string;
-      }
-      return session;
-    },
-
-    async signIn({ user, account }) {
-      try {
-        if (account?.provider === "google") {
-          if (!user.email) return false;
-          token.username = dbUser.username;
-          token.email = dbUser.email;
-        }
-      }
-
-      // Credentials login (your current logic works)
-      if (user && account?.provider === "credentials") {
-        token.userId = user.id ?? "";
-        token.username = user.username ?? "";
-        token.email = user.email ?? "";
-      }
-
-      return token;
-    },
-
 
     async session({ session, token }) {
       if (token && session.user) {
