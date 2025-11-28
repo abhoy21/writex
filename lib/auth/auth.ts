@@ -76,11 +76,29 @@ export const config = {
   ],
 
   callbacks: {
-    async jwt({ token, user }) {
-      if (user) {
+    async jwt({ token, user, account }) {
+      // On initial sign-in with credentials
+      if (user && account?.provider === "credentials") {
         token.userId = user.id!;
         token.username = user.username!;
+        token.email = user.email!;
       }
+      
+      // On initial sign-in with Google OAuth
+      if (user && account?.provider === "google") {
+        // Fetch the complete user data from database
+        const dbUser = await prisma.user.findUnique({
+          where: { email: user.email! },
+          select: { id: true, username: true, email: true }
+        });
+
+        if (dbUser) {
+          token.userId = dbUser.id;
+          token.username = dbUser.username;
+          token.email = dbUser.email;
+        }
+      }
+
       return token;
     },
 
@@ -88,6 +106,7 @@ export const config = {
       if (token && session.user) {
         session.user.id = token.userId as string;
         session.user.username = token.username as string;
+        session.user.email = token.email as string;
       }
       return session;
     },
