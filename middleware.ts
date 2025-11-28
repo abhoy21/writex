@@ -10,6 +10,11 @@ export async function middleware(request: NextRequest): Promise<NextResponse> {
 
   const { pathname } = request.nextUrl;
 
+  // Debug logging for production
+  if (process.env.NODE_ENV === "production") {
+    console.log("Middleware - Path:", pathname, "Has Token:", !!token);
+  }
+
   if (token && pathname === "/") {
     return NextResponse.redirect(new URL("/dashboard", request.url));
   }
