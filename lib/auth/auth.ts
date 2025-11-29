@@ -6,8 +6,10 @@ import GoogleProvider from "next-auth/providers/google";
 import { generatePassword } from "./generate-password";
 import { prisma } from "../prisma";
 import { AccountProvider } from "@/types/types";
+import { authConfig } from "./auth.config";
 
 export const config = {
+  ...authConfig,
   debug: process.env.NODE_ENV !== "production",
   trustHost: true,
   providers: [
@@ -193,12 +195,13 @@ export const config = {
       }
     },
   },
-
-  session: {
-    strategy: "jwt",
-    maxAge: 24 * 60 * 60,
+  pages: {
+    signIn: "/",
+    error: "/",
+    signOut: "/",
+    verifyRequest: "/",
+    newUser: "/",
   },
-  secret: process.env.NEXTAUTH_SECRET ?? "",
 } satisfies NextAuthConfig;
 
 export const { handlers, auth, signIn, signOut } = NextAuth(config);
