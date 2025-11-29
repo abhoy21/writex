@@ -41,14 +41,14 @@ export function Navbar() {
               How it Works
             </Link>
           </li>
-          <li>
+          {/* <li>
             <Link
               href="#pricing"
               className="transition-colors hover:text-foreground"
             >
               Pricing
             </Link>
-          </li>
+          </li> */}
         </ul>
 
         <div className="flex items-center gap-2">
